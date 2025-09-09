@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // 👈 navigation hook
-import buttonBgUrl from "/images/bg-button.webp";
+import buttonBgUrl from "/images/Card.webp";
 
 const Latters = () => {
   const [showLanguages, setShowLanguages] = useState(false);

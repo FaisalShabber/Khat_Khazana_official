@@ -64,7 +64,7 @@ function ParchmentButton({
         className,
       ].join(" ")}
       style={{
-        backgroundImage: "url('/images/bg-button.webp')",
+        backgroundImage: "url('/images/Card.webp')",
       }}
     >
       {children}

@@ -9,67 +9,79 @@ export default function ContactUs() {
         textTransform: "capitalize",
       }}
     >
-      <section
-        className="bg-transparent rounded-[16px] flex flex-col md:flex-row p-[35px] gap-[53px] w-full max-w-[1311px] h-auto md:h-[781px]"
-      >
+      <section className="bg-transparent rounded-[16px] flex flex-col md:flex-row p-[35px] gap-[53px] w-full max-w-[1311px] h-auto md:h-[781px]">
         {/* LEFT: How to Contact Us */}
-        <div className="flex-1 relative md:h-full">
-          <div className="relative w-full h-[400px] md:h-full flex justify-center">
-            <img
-              src="/images/Union.webp"
-              alt=""
-              className="block w-full h-full object-cover rounded-[16px]"
-            />
+        <div className="flex-1 relative md:h-full border rounded-[16px] overflow-hidden">
+          {/* ✅ Background Image */}
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: "url('/images/Union.webp')" }}
+          ></div>
 
-            {/* Overlayed content */}
-            <div className="absolute inset-0 flex items-start justify-center overflow-hidden p-4">
-              <div className="w-full">
-                <h2 className="text-[22px] font-semibold text-neutral-900 mb-3 text-center md:text-left">
-                  How to Contact Us
-                </h2>
-                <p
-                  className="text-[14px] text-black leading-5 italic mb-4 text-center md:text-left"
-                  style={{ fontFamily: "'Ephesis', cursive" }}
-                >
-                  We welcome your questions, comments, and feedback. Please
-                  choose a way to get in touch, or fill out the form.
-                </p>
+          {/* ✅ Content */}
+          <div className="relative w-full py-10 px-6 flex justify-center items-center">
+            <div className="w-full max-w-lg text-center md:text-left">
+              <h2 className="text-[22px] font-semibold text-neutral-900 mb-3">
+                How to Contact Us
+              </h2>
+              <p
+                className="text-[14px] text-black leading-5 italic mb-4"
+                style={{ fontFamily: "'Ephesis', cursive" }}
+              >
+                We welcome your questions, comments, and feedback. Please choose
+                a way to get in touch, or fill out the form.
+              </p>
 
-                <div className="space-y-3 text-[14px]">
-                  <div>
-                    <div className="font-semibold text-neutral-900">
-                      General Email:
-                    </div>
-                    <div className="font-[500] italic" style={{ fontFamily: "'Ephesis', cursive" }}>
-                      khatkhazana25@heritage.com
-                    </div>
+              <div className="space-y-3 text-[14px]">
+                <div>
+                  <div className="font-semibold text-neutral-900">
+                    General Email:
                   </div>
-
-                  <div>
-                    <div className="font-semibold text-neutral-900">
-                      Email Brian Wilson directly:
-                    </div>
-                    <div className="font-[500] italic" style={{ fontFamily: "'Ephesis', cursive" }}>
-                      khatkhazana@bwilson.com
-                    </div>
+                  <div
+                    className="font-[500] italic"
+                    style={{ fontFamily: "'Ephesis', cursive" }}
+                  >
+                    khatkhazana25@heritage.com
                   </div>
+                </div>
 
-                  <div>
-                    <div className="font-semibold text-neutral-900">By Phone:</div>
-                    <div className="font-[500] italic" style={{ fontFamily: "'Ephesis', cursive" }}>
-                      (830) 675-1718
-                    </div>
+                <div>
+                  <div className="font-semibold text-neutral-900">
+                    Email Brian Wilson directly:
                   </div>
+                  <div
+                    className="font-[500] italic"
+                    style={{ fontFamily: "'Ephesis', cursive" }}
+                  >
+                    khatkhazana@bwilson.com
+                  </div>
+                </div>
 
-                  <div>
-                    <div className="font-semibold text-neutral-900">By Snailmail:</div>
-                    <div className="font-[500] italic leading-6" style={{ fontFamily: "'Ephesis', cursive" }}>
-                      Khat Khazana, c/o Zip
-                      <br />
-                      P.O. Box 1877
-                      <br />
-                      Khat Khazana, TX 9000-1847 US
-                    </div>
+                <div>
+                  <div className="font-semibold text-neutral-900">
+                    By Phone:
+                  </div>
+                  <div
+                    className="font-[500] italic"
+                    style={{ fontFamily: "'Ephesis', cursive" }}
+                  >
+                    (830) 675-1718
+                  </div>
+                </div>
+
+                <div>
+                  <div className="font-semibold text-neutral-900">
+                    By Snailmail:
+                  </div>
+                  <div
+                    className="font-[500] italic leading-6"
+                    style={{ fontFamily: "'Ephesis', cursive" }}
+                  >
+                    Khat Khazana, c/o Zip
+                    <br />
+                    P.O. Box 1877
+                    <br />
+                    Khat Khazana, TX 9000-1847 US
                   </div>
                 </div>
               </div>
@@ -78,7 +90,7 @@ export default function ContactUs() {
         </div>
 
         {/* RIGHT: Form */}
-        <form className="flex-1 flex flex-col justify-start gap-[10px] relative">
+        <form className="flex-1 flex flex-col justify-start gap-[10px] relative border">
           {/* Form background image */}
           <img
             src="/images/form-bg.webp"
