@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+/* Reset default body margin + fix horizontal scroll */
+body {
+  margin: 0;
+  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: black;
+  line-height: 1.6;
+}
+
+#root {
+  /* max-width: 1280px; */
+  margin: 0 auto;
+  padding: 0; /* pehle yahan 2rem tha is wajah se white space aa raha tha */
+  text-align: center;
+}
+
+/* Mobile responsive background */
+@media (max-width: 640px) {
+  .bg-section {
+    background-size: contain; /* inherit ki jagah contain ziada useful hota hai */
+    background-position: center;
+  }
+}
+
+/* Logo styling */
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+/* Logo spin animation */
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+/* Card styling */
+.card {
+  padding: 2em;
+}
+
+/* Docs link styling */
+.read-the-docs {
+  color: #888;
+}
+
+.container {
+  max-width: 1920px;
+  margin: 0 auto; /* Center align */
+}
+
+.Padding-container {
+  /* Mobile (chhoti screen) par ~20px, badi screen par ~70px */
+  padding-left: clamp(20px, 5vw, 70px);
+  padding-right: clamp(20px, 5vw, 70px);
+}
