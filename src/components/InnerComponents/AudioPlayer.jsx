@@ -17,7 +17,7 @@ const AudioPlayer = () => {
       waveColor: "#d9d9d9",
       progressColor: "#6E4A27",
       cursorColor: "#6E4A27",
-      height: 40,
+      height: 50,
       barWidth: 3,
       responsive: true,
       backend: "WebAudio", // 👈 force WebAudio backend
