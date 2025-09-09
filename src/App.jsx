@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -27,6 +27,11 @@ const Page = ({ title }) => (
 const Layout = () => {
   const location = useLocation();
 
+  // ✅ Fixed meta title
+  useEffect(() => {
+    document.title = "Khat-Khazana Official";
+  }, []);
+
   return (
     <>
       {/* ✅ Navbar sirf homepage "/" pe hide hoga */}
@@ -49,14 +54,20 @@ const Layout = () => {
         <Route path="/letters/punjabi" element={<Punjabiletter />} />
         <Route path="/letters/punjabi/:id" element={<LattersDetailpage />} />
 
-        <Route path="/photographs" element={<PhotoGraph title="Photographs" />} />
-        <Route path="/PhotoGraphs/:id" element={<PhotoGraphDetail />}/>
+        <Route
+          path="/photographs"
+          element={<PhotoGraph title="Photographs" />}
+        />
+        <Route path="/PhotoGraphs/:id" element={<PhotoGraphDetail />} />
         <Route
           path="/featured"
           element={<Featurelatter title="Featured letters & Photographs" />}
         />
         <Route path="/contact" element={<ContactUs />} />
-        <Route path="/submission" element={<SubmissionForm title="Submission" />} />
+        <Route
+          path="/submission"
+          element={<SubmissionForm title="Submission" />}
+        />
         <Route path="/shop" element={<Page title="Shop" />} />
       </Routes>
 
