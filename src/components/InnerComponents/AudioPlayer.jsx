@@ -1,14 +1,55 @@
 // @ts-nocheck
 import React, { useRef, useState, useEffect } from "react";
+import WaveSurfer from "wavesurfer.js";
 import { Play, Pause } from "lucide-react";
 
 const AudioPlayer = () => {
-  const audioRef = useRef(null);
+  const waveformRef = useRef(null);
+  const wavesurfer = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
 
-  // Format time function
+  useEffect(() => {
+    // Wavesurfer init
+    wavesurfer.current = WaveSurfer.create({
+      container: waveformRef.current,
+      waveColor: "#d9d9d9",
+      progressColor: "#6E4A27",
+      cursorColor: "#6E4A27",
+      height: 40,
+      barWidth: 3,
+      responsive: true,
+      backend: "WebAudio", // 👈 force WebAudio backend
+
+    });
+
+    // Load audio
+       wavesurfer.current.load("/audio/Demo-Audio.mp3");
+
+    // Events
+    wavesurfer.current.on("ready", () => {
+      setDuration(wavesurfer.current.getDuration());
+    });
+
+    wavesurfer.current.on("audioprocess", () => {
+      setCurrentTime(wavesurfer.current.getCurrentTime());
+    });
+
+    wavesurfer.current.on("finish", () => {
+      setIsPlaying(false);
+      setCurrentTime(duration);
+    });
+
+    // Cleanup
+    return () => wavesurfer.current.destroy();
+  }, []);
+
+  const togglePlay = () => {
+    wavesurfer.current.playPause();
+    setIsPlaying(wavesurfer.current.isPlaying());
+  };
+
   const formatTime = (time) => {
     if (!time) return "0:00";
     const minutes = Math.floor(time / 60);
@@ -18,70 +59,25 @@ const AudioPlayer = () => {
     return `${minutes}:${seconds}`;
   };
 
-  // Load metadata (duration)
-  useEffect(() => {
-    const audio = audioRef.current;
-
-    const setAudioData = () => setDuration(audio.duration);
-    const updateTime = () => setCurrentTime(audio.currentTime);
-
-    audio.addEventListener("loadedmetadata", setAudioData);
-    audio.addEventListener("timeupdate", updateTime);
-
-    return () => {
-      audio.removeEventListener("loadedmetadata", setAudioData);
-      audio.removeEventListener("timeupdate", updateTime);
-    };
-  }, []);
-
-  // Play / Pause toggle
-  const togglePlay = () => {
-    const audio = audioRef.current;
-    if (isPlaying) {
-      audio.pause();
-    } else {
-      audio.play();
-    }
-    setIsPlaying(!isPlaying);
-  };
-
   return (
-    <div className="rounded-2xl  overflow-hidden shadow-md p-2 mb-8 bg-white/80 w-full">
+    <div className="rounded-2xl overflow-hidden shadow-md py-1 px-4 mb-8 bg-white/80 w-full">
       <div className="flex items-center space-x-3 w-full">
-        {/* Play / Pause button */}
+        {/* Play / Pause Button */}
         <button
           onClick={togglePlay}
           style={{ backgroundColor: "#6E4A27" }}
           className="text-white rounded-full p-2 shadow-md hover:scale-105 transition-transform"
         >
-          {isPlaying ? (
-            <Pause className="w-4 h-4" />
-          ) : (
-            <Play className="w-4 h-4" />
-          )}
+          {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
         </button>
 
-        {/* Progress bar + time */}
-        <div className="flex-1">
-          <div className="h-1 bg-gray-300 rounded-full overflow-hidden">
-            <div
-              className="h-1"
-              style={{
-                width: `${duration ? (currentTime / duration) * 100 : 0}%`,
-                backgroundColor: "#6E4A27",
-              }}
-            />
-          </div>
-          <div className="flex justify-between text-[11px] text-gray-700 mt-1">
-            <span>{formatTime(currentTime)}</span>
-            <span>{formatTime(duration)}</span>
-          </div>
-        </div>
+        {/* Waveform */}
+        <div ref={waveformRef} className="flex-1 h-[50px]" />
 
-        {/* Audio source */}
-        <audio ref={audioRef}>
-          <source src="/audio/Demo-Audio.mp3" type="audio/mpeg" />
-        </audio>
+        {/* Time */}
+        <div className="text-[11px] text-gray-700 ml-2 w-14 text-right">
+          {formatTime(currentTime)} / {formatTime(duration)}
+        </div>
       </div>
     </div>
   );
