@@ -7,7 +7,7 @@ import img3 from "/images/img3.webp";
 import img4 from "/images/img4.webp";
 import img5 from "/images/img5.webp";
 import vector from "/images/Vector.webp";
-import frame from "/images/frame.webp";
+import frame from "/images/Vertical-Frame.webp";
 import searc from "/images/searc.webp";
 import "../index.css"; // CSS for hiding scrollbar
 
