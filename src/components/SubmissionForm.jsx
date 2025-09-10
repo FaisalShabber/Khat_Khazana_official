@@ -211,27 +211,26 @@ const SubmissionForm = () => {
 
   return (
     <div>
-      <div className="flex flex-col items-center justify-center min-h-[90vh] text-black">
-        {/* Animated Text */}
-        <h1
-          className="text-4xl md:text-7xl font-bold mb-10 animate-bounce"
-          style={{ fontFamily: "philosopher" }}
-        >
-          🚧 Coming Soon 🚧
-        </h1>
+       <div className="flex flex-col items-center justify-center min-h-screen  text-black">
+      {/* Animated Heading */}
+      <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-pulse">
+        ⚙️ Under Process...
+      </h1>
 
-        {/* Sub Text */}
-        <p
-          className="text-xl md:text-2xl text-center max-w-md"
-          style={{ fontFamily: "philosopher" }}
-        >
-          We’re working hard to bring something amazing here. Stay tuned!
-        </p>
+      {/* Subtext */}
+      <p className="text-lg md:text-2xl text-center mb-8">
+        Work in progress — about 70% to 80% complete
+      </p>
 
-        {/* Loader (spinning circle) */}
-        <div className="mt-10 w-16 h-16 border-4 border-[#6E4A27] border-t-transparent rounded-full animate-spin"></div>
+      {/* Progress Bar */}
+      <div className="w-64 bg-white/30 rounded-full h-5 overflow-hidden">
+        <div className="bg-green-400 h-5 animate-[progress_3s_ease-in-out_infinite]" 
+             style={{ width: "75%" }}></div>
       </div>
 
+      {/* Loader */}
+      <div className="mt-10 w-14 h-14 border-4 border-[#6E4A27] border-t-transparent rounded-full animate-spin"></div>
+    </div>
       <div
         className="min-h-screen hidden w-full bg-cover  bg-fixed font-['Philosopher',_serif,'Ephesis'] max-w-[640px]:bg-inherit  text-[#4A2C2A] bg-section"
         style={{
