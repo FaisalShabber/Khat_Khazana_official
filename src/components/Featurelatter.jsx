@@ -1,5 +1,6 @@
+// @ts-nocheck
 import React from "react";
-import csrd from "/images/csrd.webp";
+import csrd from "/images/Card.webp";
 import img1 from "/images/img1.webp";
 import img2 from "/images/img2.webp";
 import img3 from "/images/img3.webp";

@@ -1,129 +1,129 @@
 import React from "react";
+import ContactDetail from "./InnerComponents/ContactDetail";
+import EmailOrPhone from "./InnerComponents/EmailOrPhone";
+import { FaFacebook, FaInstagramSquare, FaTwitter } from "react-icons/fa";
+import { RiInstagramFill } from "react-icons/ri";
+import HeadingDesc from "./InnerComponents/HeadingDesc";
 
 export default function ContactUs() {
   return (
     <main
-      className="min-h-screen bg-cover bg-center bg-no-repeat flex justify-center items-start"
+      className="min-h-screen flex flex-col justify-center items-center py-20 px-5"
       style={{
-        fontFamily: "Philosopher, sans-serif",
+        fontFamily: "Philosopher",
         textTransform: "capitalize",
       }}
     >
-      <section className="bg-transparent rounded-[16px] flex flex-col md:flex-row p-[35px] gap-[53px] w-full max-w-[1311px] h-auto md:h-[781px]">
+      <HeadingDesc
+        headingClassName="md:text-[40px] text-center"
+        heading="Contact Us"
+        containerClassName="mb-14"
+        description={undefined}
+      />
+
+      <section className="flex flex-col-reverse xl:flex-row w-full max-w-[1200px] rounded-[16px] p-5 lg:p-10 overflow-hidden shadow-2xl shadow-black/20 bg-[#FFE1B8]/50">
         {/* LEFT: How to Contact Us */}
-        <div className="flex-1 relative md:h-full border rounded-[16px] overflow-hidden">
-          {/* ✅ Background Image */}
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url('/images/Union.webp')" }}
-          ></div>
+        <div
+          className="relative flex flex-col justify-center items-center lg:py-8 lg:bg-contain bg-no-repeat bg-center w-full h-[700px] object-cover  md:w-[500px] "
+          style={{ backgroundImage: "url('/images/Union.webp')" }}
+        >
+          <div className="w-fit text-left px-3 lg:px-8">
+            <div className="flex flex-col ">
+              <ContactDetail
+                title="Get in Touch"
+                description="We are here to assist you anytime. Reach out via email or phone."
+                descriptionClass="text-2xl"
+              />
 
-          {/* ✅ Content */}
-          <div className="relative w-full py-10 px-6 flex justify-center items-center">
-            <div className="w-full max-w-lg text-center md:text-left">
-              <h2 className="text-[22px] font-semibold text-neutral-900 mb-3">
-                How to Contact Us
-              </h2>
-              <p
-                className="text-[14px] text-black leading-5 italic mb-4"
-                style={{ fontFamily: "'Ephesis', cursive" }}
-              >
-                We welcome your questions, comments, and feedback. Please choose
-                a way to get in touch, or fill out the form.
-              </p>
+              <EmailOrPhone
+                label="General Email:"
+                value="khatkhazana25@heritage.com"
+                type="email"
+              />
 
-              <div className="space-y-3 text-[14px]">
-                <div>
-                  <div className="font-semibold text-neutral-900">
-                    General Email:
-                  </div>
-                  <div
-                    className="font-[500] italic"
-                    style={{ fontFamily: "'Ephesis', cursive" }}
-                  >
-                    khatkhazana25@heritage.com
-                  </div>
-                </div>
+              <EmailOrPhone
+                label="Email Brian Wilson directly:"
+                value="khatkhazana@bwilson.com"
+                type="email"
+              />
 
-                <div>
-                  <div className="font-semibold text-neutral-900">
-                    Email Brian Wilson directly:
-                  </div>
-                  <div
-                    className="font-[500] italic"
-                    style={{ fontFamily: "'Ephesis', cursive" }}
-                  >
-                    khatkhazana@bwilson.com
-                  </div>
-                </div>
+              <EmailOrPhone
+                label="Phone:"
+                value="+92 300 1234567"
+                type="phone"
+              />
+            </div>
 
-                <div>
-                  <div className="font-semibold text-neutral-900">
-                    By Phone:
-                  </div>
-                  <div
-                    className="font-[500] italic"
-                    style={{ fontFamily: "'Ephesis', cursive" }}
-                  >
-                    (830) 675-1718
-                  </div>
-                </div>
-
-                <div>
-                  <div className="font-semibold text-neutral-900">
-                    By Snailmail:
-                  </div>
-                  <div
-                    className="font-[500] italic leading-6"
-                    style={{ fontFamily: "'Ephesis', cursive" }}
-                  >
-                    Khat Khazana, c/o Zip
-                    <br />
-                    P.O. Box 1877
-                    <br />
-                    Khat Khazana, TX 9000-1847 US
-                  </div>
-                </div>
+            <div>
+              <div className="font-semibold text-xl mb-2 ">By Snailmail:</div>
+              <div className="text-2xl" style={{ fontFamily: "Ephesis" }}>
+                Khat Khazana, c/o Zip
+                <br />
+                P.O. Box 1877
+                <br />
+                Khat Khazana, TX 9000-1847 US
               </div>
+            </div>
+
+            {/* Social Icons */}
+            <div className="flex gap-4  mt-10 text-3xl">
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-pink-500"
+              >
+                <RiInstagramFill />
+              </a>
+
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-sky-500"
+              >
+                <FaTwitter />
+              </a>
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-blue-600"
+              >
+                <FaFacebook />
+              </a>
             </div>
           </div>
         </div>
 
         {/* RIGHT: Form */}
-        <form className="flex-1 flex flex-col justify-start gap-[10px] relative border">
-          {/* Form background image */}
-          <img
-            src="/images/form-bg.webp"
-            alt="Form Background"
-            className="absolute top-0 left-0 w-full max-w-[522px] h-[400px] md:h-[687px] md:w-[522px] object-cover rounded-[16px] -z-10"
-          />
-
+        <form className="flex-1 p-6 xl:p-10 backdrop-blur-md text-left">
           {/* Top row */}
-          <div className="grid md:grid-cols-2 gap-3 relative z-10">
+          <div className="grid md:grid-cols-2 gap-3">
             <Field label="Name" required />
             <Field label="Email" type="email" required />
           </div>
 
           {/* Row 2 */}
-          <div className="grid md:grid-cols-2 gap-3 mt-3 relative z-10">
+          <div className="grid md:grid-cols-2 gap-3 mt-3">
             <Field label="Country" />
             <Field label="Phone" type="tel" />
           </div>
 
           {/* Row 3 */}
-          <div className="grid md:grid-cols-3 gap-3 mt-3 relative z-10">
+          <div className="grid md:grid-cols-3 gap-3 mt-3">
             <Field label="City" required />
             <Field label="State" required />
             <Field label="Zip" />
           </div>
 
           {/* Address */}
-          <div className="mt-3 relative z-10">
+          <div className="mt-3">
             <Field label="Address" required />
           </div>
 
           {/* Message */}
-          <div className="mt-3 relative z-10">
+          <div className="mt-3">
             <label className="block text-[13px] font-medium text-black mb-1">
               Message
             </label>
@@ -134,7 +134,7 @@ export default function ContactUs() {
           </div>
 
           {/* Checkbox */}
-          <label className="mt-3 flex items-start gap-2 text-[12.5px] text-black relative z-10">
+          <label className="mt-3 flex items-start gap-2 text-[12.5px] text-black">
             <input
               type="checkbox"
               className="mt-1 h-4 w-4 rounded border-black/40 accent-[#5a3c1e]"
@@ -149,10 +149,10 @@ export default function ContactUs() {
           </label>
 
           {/* Button */}
-          <div className="mt-4 relative z-10">
+          <div className="mt-4">
             <button
               type="submit"
-              className="w-full md:w-[666px] h-[56px] rounded-[10px] bg-[#5a3c1e] text-white text-[14px] px-[20px] py-[10px] shadow-md hover:bg-[#3f2b15] transition"
+              className="w-full h-[50px] rounded-[10px] bg-[#5a3c1e] text-white text-[14px] px-[20px] py-[10px] shadow-md hover:bg-[#3f2b15] transition cursor-pointer"
             >
               Send Message
             </button>
