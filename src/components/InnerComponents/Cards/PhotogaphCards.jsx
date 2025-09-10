@@ -5,6 +5,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper/modules";
 import LetterCard from "./LetterCard";
+import PhotographCard from "./PhotographCard";
 
 const cards = [
   {
@@ -50,10 +51,10 @@ const PhotogaphCards = () => {
         >
           {cards.map((card, i) => (
             <SwiperSlide key={i} className="flex justify-start">
-              <LetterCard
-                to={`/letters/english/${i}`}
-                img={card.img}
-                overlay={card.overlay}
+              <PhotographCard
+                key={card.id}
+                to={`/PhotoGraphs/${i}`}
+                overlayImg={card?.overlay}
                 title={card.title}
                 description={card.description}
               />

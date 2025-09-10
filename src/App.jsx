@@ -15,14 +15,7 @@ import PhotoGraph from "./components/PhotoGraph";
 import SubmissionForm from "./components/SubmissionForm";
 import Featurelatter from "./components/Featurelatter";
 import PhotoGraphDetail from "./components/PhotoGraphDetail";
-
-// Simple placeholders – replace with your real pages
-const Page = ({ title }) => (
-  <div className="max-w-[1240px] mx-auto mt-6 bg-white/75 p-6 rounded-md border border-black/10">
-    <h1 className="text-2xl font-title mb-2">{title}</h1>
-    <p>Content goes here…</p>
-  </div>
-);
+import ShopPage from "./components/ShopPage";
 
 const Layout = () => {
   const location = useLocation();
@@ -68,7 +61,7 @@ const Layout = () => {
           path="/submission"
           element={<SubmissionForm title="Submission" />}
         />
-        <Route path="/shop" element={<Page title="Shop" />} />
+        <Route path="/shop" element={<ShopPage title="Shop" />} />
       </Routes>
 
       {/* ✅ Footer sirf homepage pe hide hoga */}
