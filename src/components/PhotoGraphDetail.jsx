@@ -1,170 +1,149 @@
 import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { IoCalendarOutline } from "react-icons/io5";
+import { useParams } from "react-router-dom";
+import ThumbnailCards from "./InnerComponents/ThumbnailCards";
+import RelatedCards from "./InnerComponents/Cards/Cards";
 
 const cards = [
-  { id: 1, overlay: "/images/image 5-min.webp", title: "Old Photo 1", desc: "This is detail of photo 1" },
-  { id: 2, overlay: "/images/image 5 (1)-min.webp", title: "Old Photo 2", desc: "This is detail of photo 2" },
-  { id: 3, overlay: "/images/image 5 (2).webp", title: "Old Photo 3", desc: "This is detail of photo 3" },
-  { id: 4, overlay: "/images/image 5-min.webp", title: "Old Photo 4", desc: "This is detail of photo 4" },
-  { id: 5, overlay: "/images/image 5 (1)-min.webp", title: "Old Photo 5", desc: "This is detail of photo 5" },
-  { id: 6, overlay: "/images/image 5 (2).webp", title: "Old Photo 6", desc: "This is detail of photo 6" },
+  {
+    id: 1,
+    overlay: "/images/image 5-min.webp",
+    title: "Old Photo 1",
+    desc: "This is detail of photo 1",
+  },
+  {
+    id: 2,
+    overlay: "/images/image 5 (1)-min.webp",
+    title: "Old Photo 2",
+    desc: "This is detail of photo 2",
+  },
+  {
+    id: 3,
+    overlay: "/images/image 5 (2).webp",
+    title: "Old Photo 3",
+    desc: "This is detail of photo 3",
+  },
+  {
+    id: 4,
+    overlay: "/images/image 5-min.webp",
+    title: "Old Photo 4",
+    desc: "This is detail of photo 4",
+  },
+  {
+    id: 5,
+    overlay: "/images/image 5 (1)-min.webp",
+    title: "Old Photo 5",
+    desc: "This is detail of photo 5",
+  },
+  {
+    id: 6,
+    overlay: "/images/image 5 (2).webp",
+    title: "Old Photo 6",
+    desc: "This is detail of photo 6",
+  },
 ];
 
 const PhotoGraphDetail = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const photo = cards.find((c) => c.id === Number(id));
 
   if (!photo) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
-        <h1 className="text-2xl font-semibold text-red-500">❌ Photo not found</h1>
+        <h1 className="text-2xl font-semibold text-red-500">
+          ❌ Photo not found
+        </h1>
       </div>
     );
   }
 
   return (
-    <div
-      className="min-h-screen bg-cover bg-center flex flex-col items-center py-8 px-4"
-      style={{ backgroundImage: "url('/images/background img-min.webp')" }}
-    >
-      {/* Main Section */}
-      <div
-        className="relative flex flex-col w-full max-w-6xl rounded-xl overflow-hidden shadow-lg mt-4 bg-[#fdf6ec]"
-        style={{
-          backgroundImage: `url('/images/dev background.png-min.webp')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="p-6">
-          <h2 className="text-3xl font-bold text-[#3d2b1f] mb-6 text-center">
+    <>
+      {/* ✅ Base background wrapper */}
+      <div className="min-h-[300px] px-5 lg:px-0 bg-cover bg-center">
+        <div className="py-5  max-w-[1270px]  w-full mx-auto text-black">
+          {/* Date + Category */}
+          <div className="flex items-center text-sm  mt-10">
+            <div className="inline-flex items-center justify-evenly bg-white text-black px-4 py-2 rounded-full shadow-sm space-x-2">
+              <IoCalendarOutline className="w-4 h-4 mr-2" />
+              <span className="text-sm" style={{ fontFamily: "philosopher" }}>
+                08 Jan, 2025
+              </span>
+
+              <span className="w-px h-4 bg-black ml-1" />
+              <span className="text-sm">War Political</span>
+            </div>
+          </div>
+          {/* Title */}.
+          <p
+            className="w-full max-w-[700px] text-left text-3xl sm:text-[40px] md:text-[50px] font-bold capitalize "
+            style={{ fontFamily: "philosopher" }}
+          >
             Want More Historic Letters?
-          </h2>
+          </p>
+        </div>
 
-          {/* Main Image */}
-          <div className="flex justify-center mb-8">
-            <img
-              src={photo.overlay}
-              alt={photo.title}
-              className="w-full max-h-[32rem] object-cover rounded-lg shadow-md"
-            />
-          </div>
-
-          {/* Paragraphs + Thumbnails Side by Side */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-            {/* Left: Paragraphs */}
-            <div className="space-y-3 text-[#3d2b1f] text-justify leading-relaxed">
-              <p>
-                Historic documents preserving time by OAI, a special collection
-                of rare military letters, diaries, and correspondence.
-              </p>
-              <p>
-                These documents reflect personal struggles, emotions, and untold
-                stories from soldiers and their families.
-              </p>
-              <p>
-                Our archive continues to expand, ensuring that such memories are
-                never lost to history.
-              </p>
+        {/* ✅ Second background wrapper */}
+        <div
+          className=" w-full max-w-[1270px] rounded-[16px] 
+             py-10 px-5 lg:py-16 lg:px-8 flex flex-col gap-10 
+             bg-cover bg-center mx-auto "
+          style={{ backgroundImage: "url('/images/Card.webp')" }}
+        >
+          <div className="w-full text-black">
+            {/* Historic Letter Image */}
+            <div className="mb-6 ">
+              <img
+                src="/images/latterdetailpage img.webp"
+                alt="Historic Letter"
+                className="object-cover rounded-[20px] mx-auto w-full  h-[300px] lg:h-[500px] max-h-[500px]"
+              />
             </div>
 
-            {/* Right: Vertical Thumbnails with Line */}
-            <div className="flex justify-end">
-              <div className="flex flex-col justify-start items-start gap-6 relative">
-                {/* Decorative Vertical Line */}
-                <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-gray-500"></div>
-
-                {/* Thumbnail 1 */}
-                <div className="flex flex-col items-center bg-black rounded-lg p-2 shadow-md w-28 ml-6">
-                  <img
-                    src="/images/image 5-min.webp"
-                    alt="thumb1"
-                    className="w-20 h-16 object-cover rounded-md shadow-md"
-                  />
-                  <p className="text-white text-xs italic text-center mt-2">
-                    Rare letter
-                  </p>
-                </div>
-
-                {/* Thumbnail 2 */}
-                <div className="flex flex-col items-center bg-black rounded-lg p-2 shadow-md w-28 ml-6">
-                  <img
-                    src="/images/image 5 (1)-min.webp"
-                    alt="thumb2"
-                    className="w-20 h-16 object-cover rounded-md shadow-md"
-                  />
-                  <p className="text-white text-xs italic text-center mt-2">
-                    Historic notes
-                  </p>
-                </div>
-
-           
+            {/* Paragraph + Right Cards */}
+            <div className="mt-10 flex flex-col lg:flex-row justify-between  gap-10">
+              <div
+                className="lg:w-[70%] xl:w-[80%]  w-full text-[18px] sm:text-[20px] md:text-[26px] lg:text-[30px] 
+                   text-black leading-7 sm:leading-8 md:leading-10 italic text-left "
+                style={{ fontFamily: "'Ephesis'" }}
+              >
+                Reduced documents processing time by 60% & improved
+                collaboration efficiency, Reduced documents processing time by
+                60% & improved collaboration efficiency, Reduced documents
+                processing time.
+                <br />
+                Reduced documents processing time by 60% & improved
+                collaboration efficiency, Reduced documents processing time by
+                60% & improved collaboration efficiency, Reduced documents
+                processing time by 60% & improved collaboration
+                efficiency,Reduced documents processing time by 60% & improved.
+                <br />
+                Reduced documents processing time by 60% & improved
+                collaboration efficiency, Reduced documents processing time by
+                60% & improved collaboration efficiency, Reduced documents
+                processing time by 60% & improved collaboration
+                efficiency,Reduced documents processing time by 60% & improved.
               </div>
+
+              {/* Vertical Line → always visible */}
+
+              <div className="self-center w-full h-px border-t border-black lg:w-px lg:h-[400px] lg:border-t-0 lg:border-l"></div>
+
+              {/* ✅ Thumbnails */}
+
+              <ThumbnailCards />
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Related Photographs */}
-      <div className="mt-12 max-w-6xl w-full">
-        <h2 className="text-3xl font-bold text-[#3d2b1f] text-center mb-8">
-          Related Photographs
-        </h2>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {cards.slice(0, 3).map((c) => (
-            <div
-              key={c.id}
-              onClick={() => navigate(`/photo/${c.id}`)}
-              className="relative text-center h-[30rem] flex flex-col items-center rounded-xl overflow-hidden shadow-lg cursor-pointer"
-              style={{
-                backgroundImage: `url('/images/dev background.png-min.webp')`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-            >
-              {/* Frame */}
-              <div className="absolute top-6 flex items-center justify-center z-10 w-full h-[65%]">
-                <img
-                  src="/images/frame-min.webp"
-                  alt="Frame"
-                  className="w-3/5 h-full object-contain"
-                />
-              </div>
-
-              {/* Overlay Image */}
-              <div className="absolute top-6 flex items-center justify-center z-20 w-full h-[65%]">
-                <img
-                  src={c.overlay}
-                  alt={c.title}
-                  className="w-2/5 h-full object-contain"
-                />
-              </div>
-
-              {/* Bottom Text */}
-              <div className="absolute bottom-10 w-full px-4 z-30">
-                <h3 className="text-lg font-semibold text-black mb-2">
-                  Want more photographs?
-                </h3>
-                <p className="text-sm italic text-black">
-                  Join our archive mailing list and never miss an update.
-                </p>
-              </div>
-            </div>
-          ))}
+        {/* ✅ Related Letters Section */}
+        <div className="w-full lg:py-20 py-10">
+          <RelatedCards />
         </div>
       </div>
-
-      {/* Back Button */}
-      <button
-        onClick={() => navigate(-1)}
-        className="mt-10 px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition"
-      >
-        ⬅ Back
-      </button>
-    </div>
+    </>
   );
 };
 

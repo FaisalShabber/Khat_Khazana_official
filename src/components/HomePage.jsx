@@ -10,12 +10,12 @@ const Homepage = () => {
       <video
         className="
           w-full 
-       h-[400px]
+       h-[410px]
           object-cover
           block
           align-top
         "
-        src="https://cdn.pixabay.com/video/2022/02/09/107243-678130082_large.mp4"
+        src="/video/Bg-video.mp4"
         autoPlay
         loop
         muted
