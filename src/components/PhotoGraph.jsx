@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 import HeadingDesc from "./InnerComponents/HeadingDesc";
 import PhotographCard from "./InnerComponents/Cards/PhotographCard";
 import Subcription from "./InnerComponents/Subcription";
@@ -17,8 +18,7 @@ const cards = [
 ];
 
 const PhotoGraph = () => {
-  // const navigate = useNavigate();
-
+  const navigate = useNavigate();
   const [visibleCount, setVisibleCount] = useState(12);
   const [loading, setLoading] = useState(false);
 
@@ -62,25 +62,14 @@ const PhotoGraph = () => {
       </div>
 
       {/* Cards */}
-      <div className="mt-16 w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
-        {visibleCards.map((card, i) => (
-          // <PhotographCard
-          //   key={i}
-          //   to={`/PhotoGraphs/${i}`}
-          //   img={card.img}
-          //   overlay={card.overlay}
-          //   title={card.title}
-          //   description={card.description}
-          // />
-
+      <div className="mt-16 w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        {visibleCards?.map((card, i) => (
           <PhotographCard
-            to="/photo-detail"
-            backgroundImg="/images/bg.jpg"
-            frameImg="/images/frame.png"
-            mainImg="/images/photo.jpg"
-            watermarkImg="/images/watermark.png"
-            title="Historic Letter"
-            description="Special archives collection"
+            key={card.id}
+            to={`/PhotoGraphs/${i}`}
+            overlayImg={card?.overlay}
+            title="Explore More Letters"
+            description="Subscribe now to discover unique handwritten letters."
           />
         ))}
       </div>

@@ -3,6 +3,8 @@ import { IoCalendarOutline } from "react-icons/io5";
 import { useParams } from "react-router-dom";
 import ThumbnailCards from "./InnerComponents/ThumbnailCards";
 import RelatedCards from "./InnerComponents/Cards/Cards";
+import RelatedPhotogaph from "./InnerComponents/Cards/PhotogaphCards";
+import RelatedPhotographs from "./InnerComponents/Cards/RelatedPhotographs";
 
 const cards = [
   {
@@ -44,20 +46,20 @@ const cards = [
 ];
 
 const PhotoGraphDetail = () => {
-  const { id } = useParams();
-  // const navigate = useNavigate();
+  // const { id } = useParams();
+  // // const navigate = useNavigate();
 
-  const photo = cards.find((c) => c.id === Number(id));
+  // const photo = cards?.find((c) => c.id === Number(id));
 
-  if (!photo) {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-100">
-        <h1 className="text-2xl font-semibold text-red-500">
-          ❌ Photo not found
-        </h1>
-      </div>
-    );
-  }
+  // if (!photo) {
+  //   return (
+  //     <div className="flex items-center justify-center min-h-screen bg-gray-100">
+  //       <h1 className="text-2xl font-semibold text-red-500">
+  //         ❌ Photo not found
+  //       </h1>
+  //     </div>
+  //   );
+  // }
 
   return (
     <>
@@ -139,8 +141,8 @@ const PhotoGraphDetail = () => {
         </div>
 
         {/* ✅ Related Letters Section */}
-        <div className="w-full lg:py-20 py-10">
-          <RelatedCards />
+        <div className=" w-full lg:py-20 py-10">
+          <RelatedPhotographs />
         </div>
       </div>
     </>

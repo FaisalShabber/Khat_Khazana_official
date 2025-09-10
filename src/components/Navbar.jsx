@@ -1,9 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import ReactCountryFlag from "react-country-flag";
-import { createPortal } from "react-dom";
-import { MdOutlineKeyboardArrowDown } from "react-icons/md";
-import { LuSearch } from "react-icons/lu";
 
 const linkBase =
   "text-black text-base tracking-[0.2px] hover:underline underline-offset-4 whitespace-nowrap";
@@ -13,53 +9,12 @@ export default function Navbar() {
   const navClass = ({ isActive }) =>
     `${linkBase} ${isActive ? linkActive : ""}`;
 
-  // Languages
-  const LANGS = [
-    { code: "GB", label: "English" },
-    { code: "FR", label: "Français" },
-    { code: "DE", label: "Deutsch" },
-    { code: "PK", label: "Urdu" },
-  ];
-  const [lang, setLang] = useState(LANGS[0]);
-
-  // Flags dropdown
-  const [flagOpen, setFlagOpen] = useState(false);
-  const flagBtnRef = useRef(null);
-  const [flagPos, setFlagPos] = useState({ top: 0, left: 0 });
-
-  const toggleFlag = () => {
-    const r = flagBtnRef.current?.getBoundingClientRect();
-    if (r)
-      setFlagPos({
-        top: r.bottom + 8,
-        left: Math.max(8, r.right - 160),
-      });
-    setFlagOpen((v) => !v);
-  };
-
-  useEffect(() => {
-    if (!flagOpen) return;
-    const onClick = (e) => {
-      if (!flagBtnRef.current) return;
-      if (e.target instanceof Node && !flagBtnRef.current.contains(e.target))
-        setFlagOpen(false);
-    };
-    const onEsc = (e) => e.key === "Escape" && setFlagOpen(false);
-    window.addEventListener("mousedown", onClick);
-    window.addEventListener("keydown", onEsc);
-    return () => {
-      window.removeEventListener("mousedown", onClick);
-      window.removeEventListener("keydown", onEsc);
-    };
-  }, [flagOpen]);
-
   // Nav links
   const NAV_LINKS = [
     { to: "/about", label: "About Us" },
     { to: "/letters", label: "Letters" },
     { to: "/photographs", label: "Photographs" },
     { to: "/featured", label: "Featured letters & Photographs" },
-    { to: "/contact", label: "Contact Us" },
     { to: "/submission", label: "Submission" },
     { to: "/shop", label: "Shop" },
   ];
@@ -76,7 +31,7 @@ export default function Navbar() {
         backgroundSize: "100% 100%",
       }}
     >
-      <div className="mx-auto w-full Padding-container px-4 lg:px-6 py-2 flex items-center justify-between z-50">
+      <div className="mx-auto w-full px-5 lg:px-20 py-2 flex items-center justify-between z-50">
         {/* LEFT: Logo */}
         <Link
           to="/"
@@ -102,48 +57,15 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* RIGHT: Search + Flag + Hamburger */}
+        {/* RIGHT: Contact Us Button + Hamburger */}
         <div className="flex items-center gap-3">
-          {/* Search */}
-          <form
-            role="search"
-            onSubmit={(e) => e.preventDefault()}
-            className="relative hidden sm:flex items-center rounded-full"
-            style={{
-              width: "140px",
-              height: "40px",
-              border: "1.5px solid",
-            }}
+          {/* Contact Us Button */}
+          <Link
+            to="/contact"
+            className="hidden  bg-[#6E4A27] text-white font-bold px-7 leading-8 py-2 xl:flex justify-center items-center text-center rounded-full transition"
           >
-            <input
-              type="search"
-              aria-label="Search"
-              className="w-full h-full pl-8 pr-2 bg-transparent outline-none text-base"
-              placeholder="Search..."
-            />
-            <LuSearch className="absolute left-2 text-black text-xl" />
-          </form>
-
-          {/* Flag Dropdown */}
-          <button
-            ref={flagBtnRef}
-            type="button"
-            onClick={toggleFlag}
-            className="flex items-center gap-1"
-            aria-haspopup="listbox"
-            aria-expanded={flagOpen}
-            title={lang.label}
-          >
-            <div className="w-[30px] h-[30px] rounded-full overflow-hidden">
-              <ReactCountryFlag
-                countryCode={lang.code}
-                svg
-                style={{ width: "100%", height: "100%" }}
-                className="rounded-full object-cover"
-              />
-            </div>
-            <MdOutlineKeyboardArrowDown size={16} />
-          </button>
+            Contact Us
+          </Link>
 
           {/* Hamburger (mobile right) */}
           <button
@@ -181,7 +103,7 @@ export default function Navbar() {
         }`}
         aria-hidden={!menuOpen}
       >
-        {/* 🔹 Logo Section */}
+        {/* Logo Section */}
         <div className="flex justify-center items-center mt-6 mb-4">
           <Link to="/" onClick={() => setMenuOpen(false)}>
             <img
@@ -192,10 +114,10 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* 🔹 Divider */}
+        {/* Divider */}
         <div className="border-b border-gray-500 mx-4 mb-4"></div>
 
-        {/* 🔹 Nav Links */}
+        {/* Nav Links */}
         <div className="flex flex-col gap-2 p-4">
           {NAV_LINKS.map((link) => (
             <NavLink
@@ -211,41 +133,23 @@ export default function Navbar() {
               {link.label}
             </NavLink>
           ))}
+
+          {/* Contact Us button in mobile menu */}
+          <Link
+            to="/contact"
+            onClick={() => setMenuOpen(false)}
+            className="mt-4 block text-center bg-[#6E4A27] text-white font-medium px-7 leading-8 py-1  rounded-full"
+          >
+            Contact Us
+          </Link>
+              <Link
+            to="/contact"
+            className="hidden  bg-[#6E4A27] text-white font-bold px-7 leading-8 py-2 xl:flex justify-center items-center text-center rounded-full transition"
+          >
+            Contact Us
+          </Link>
         </div>
       </div>
-
-      {/* Flag dropdown */}
-      {flagOpen &&
-        createPortal(
-          <ul
-            className="fixed z-[10000] w-40 rounded-md border border-black/10 bg-white shadow-lg p-2 flex flex-col gap-1"
-            style={{ top: flagPos.top, left: flagPos.left }}
-            role="listbox"
-          >
-            {LANGS.map((opt) => (
-              <li key={opt.code}>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setLang(opt);
-                    setFlagOpen(false);
-                  }}
-                  className="flex items-center justify-between w-full h-[39px] px-3 rounded-md border border-black/20 bg-white hover:bg-gray-100"
-                  role="option"
-                  aria-selected={lang.code === opt.code}
-                >
-                  <ReactCountryFlag
-                    countryCode={opt.code}
-                    svg
-                    className="w-6 h-4 rounded-sm ring-1 ring-black/15"
-                  />
-                  <span className="ml-2 text-sm">{opt.label}</span>
-                </button>
-              </li>
-            ))}
-          </ul>,
-          document.body
-        )}
     </header>
   );
 }

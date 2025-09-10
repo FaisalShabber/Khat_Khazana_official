@@ -1,81 +1,50 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const PhotographCard = ({
   to = "#",
-  backgroundImg, // background image (pure card ka)
-  frameImg, // frame image
-  mainImg, // jo image frame ke andar show hogi
-  watermarkImg, // watermark image
-  title = "Want more historic letters?",
-  description = "Join our archive mailing list and never miss an update.",
-  className = "",
+  overlayImg = "/images/sample.jpg", // overlay image prop
+  title = "Want more historic letters?", // heading prop
+  description = "Join our archive mailing list and never miss an update.", // description prop
 }) => {
+  const navigate = useNavigate();
+
   return (
-    <Link to={to}>
+    <Link to={to} className="mx-auto">
       <div
-        className={`relative cursor-pointer rounded-[20px] overflow-hidden w-[350px] h-[410px] group mx-auto ${className}`}
+        onClick={() => navigate(to)}
+        className="relative text-center overflow-hidden  cursor-pointer w-[350px] h-[450px] rounded-[20px] p-[30px_10px] bg-[url('/images/Card.webp')] bg-cover bg-center"
       >
-        {/* 🔹 Background Image */}
-        <img
-          src={backgroundImg}
-          alt="Background"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-
-        {/* 🔹 Frame Section */}
-        <div className="relative w-[310px] h-[250px] mx-auto mt-[30px]">
-          {/* Frame image */}
+        {/* Frame */}
+        <div className="absolute z-10 top-[30px] left-1/2 -translate-x-1/2 w-[210px] h-[300px]">
           <img
-            src={frameImg}
+            src="/images/Vertical-Frame.webp"
             alt="Frame"
-            className="absolute inset-0 w-full h-full object-contain z-20 pointer-events-none"
+            className="w-full h-full object-contain"
           />
-
-          {/* Main image inside frame */}
-          <div className="absolute inset-[20px] rounded-[10px] overflow-hidden z-10">
-            <img
-              src={mainImg}
-              alt="Main"
-              className="w-full h-full object-cover rounded-[10px]"
-            />
-
-            {/* Watermark on top of main image */}
-            {watermarkImg && (
-              <img
-                src={watermarkImg}
-                alt="Watermark"
-                className="absolute bottom-2 right-2 w-[60px] opacity-30 pointer-events-none"
-              />
-            )}
-          </div>
         </div>
 
-        {/* 🔹 Bottom Text */}
-        <div
-          className="absolute text-left"
-          style={{
-            width: "310px",
-            bottom: "20px",
-            left: "23px",
-          }}
-        >
+        {/* Overlay Image */}
+        <div className="absolute z-20 top-[60px] left-[105px] w-[143px] h-[238px]">
+          <img
+            src={overlayImg}
+            alt="Overlay"
+            className="w-full h-full object-contain"
+          />
+        </div>
+
+        {/* Bottom Heading */}
+
+        <div className="absolute z-30 text-left top-[350px] left-[23px] w-[290px]">
           <h2
-            className="text-[24px] sm:text-base lg:text-xl font-semibold text-black mb-1 truncate w-full"
+            className="text-[24px] sm:text-base lg:text-xl font-semibold text-black mb-1 truncate w-full "
             style={{ fontFamily: "philosopher" }}
           >
             {title}
           </h2>
           <p
-            className="line-clamp-2"
-            style={{
-              fontFamily: "Ephesis",
-              fontWeight: 400,
-              fontSize: "20px",
-              lineHeight: "100%",
-              color: "#000000",
-              margin: 0,
-            }}
+            className="font-ephesis text-[20px] leading-[100%] text-black line-clamp-2"
+            style={{ fontFamily: "Ephesis" }}
           >
             {description}
           </p>
