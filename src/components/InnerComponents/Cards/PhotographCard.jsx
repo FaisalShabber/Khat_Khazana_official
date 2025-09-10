@@ -29,7 +29,7 @@ const PhotographCard = ({
           <img
             src={overlayImg}
             alt="Overlay"
-            className="w-full h-full object-contain"
+            className="w-full h-full object-cover"
           />
         </div>
 
