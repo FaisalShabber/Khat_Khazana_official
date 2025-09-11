@@ -1,592 +1,295 @@
 import React, { useState } from "react";
+import ParchmentButton from "./InnerComponents/ParchmentButton";
+import Form from "./InnerComponents/SubmissionForm/Form";
 
-// Helper components for form elements
-const InputField = ({
-  label,
-  type = "text",
-  name,
-  required = false,
-  wrapperClassName = "",
-  className = "",
-}) => (
-  <div className={`flex flex-col ${wrapperClassName}`}>
-    <label htmlFor={name} className="font-bold text-sm mb-2 text-[#4A2C2A]">
-      {label} {required && <span className="text-red-600">*</span>}
-    </label>
-    <input
-      type={type}
-      id={name}
-      name={name}
-      className={`border border-[#8B4513]/50 text-[#4A2C2A] text-sm rounded-lg focus:ring-[#8B4513] focus:border-[#8B4513] block w-full p-2.5 ${className}`}
-    />
-  </div>
-);
+// ✅ Modal Component
+const Modal = ({ isOpen, onClose, title, children }) => {
+  if (!isOpen) return null;
 
-const TextareaField = ({
-  label,
-  name,
-  required = false,
-  className = "",
-  rows = 4,
-}) => (
-  <div className={`flex flex-col ${className}`}>
-    <label htmlFor={name} className="font-bold text-sm mb-2 text-[#4A2C2A]">
-      {label} {required && <span className="text-red-600">*</span>}
-    </label>
-    <textarea
-      id={name}
-      name={name}
-      rows={rows}
-      className=" border border-[#8B4513]/50 text-[#4A2C2A] text-sm rounded-lg focus:ring-[#8B4513] focus:border-[#8B4513] block resize-none p-2.5 h-10"
-    />
-  </div>
-);
-
-const RadioGroup = ({
-  label,
-  name,
-  options,
-  value,
-  onChange,
-  required = false,
-  className = "",
-}) => (
-  <div className={`flex flex-col ${className}`}>
-    <label className="font-bold text-sm mb-2 text-[#4A2C2A]">
-      {label} {required && <span className="text-red-600">*</span>}
-    </label>
-    <div className="flex items-center space-x-6 pt-2">
-      {options.map((option) => (
-        <label key={option.value} className="flex items-center cursor-pointer">
-          <input
-            type="radio"
-            name={name}
-            value={option.value}
-            checked={value === option.value}
-            onChange={onChange}
-            className="w-4 h-4 text-[#4A2C2A] bg-gray-100 border-gray-300 focus:ring-[#4A2C2A]"
-          />
-          <span className="ml-2 text-sm text-[#5C4033]">{option.label}</span>
-        </label>
-      ))}
-    </div>
-  </div>
-);
-
-const FileInput = ({ label, subtext, name, required = false }) => (
-  <div className="flex flex-col">
-    {label && (
-      <label className="font-bold text-sm mb-2 block text-[#4A2C2A]">
-        {label} {required && <span className="text-red-600">*</span>}
-      </label>
-    )}
-    <button
-      type="button"
-      className="bg-[#8B5E3C] text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-[#A17A5D] transition-colors w-max"
-    >
-      Choose File
-    </button>
-    {subtext && <p className="text-xs text-red-500 mt-2">{subtext}</p>}
-  </div>
-);
-
-const CheckboxField = ({ label, name, checked, onChange }) => (
-  <div className="flex items-center">
-    <input
-      id={name}
-      name={name}
-      type="checkbox"
-      checked={checked}
-      onChange={onChange}
-      className="w-4 h-4 bg-transparent text-[#4A2C2A]  border-[#8B4513]/50 rounded focus:ring-[#4A2C2A]"
-    />
-    <label htmlFor={name} className="ml-3 text-sm text-[#5C4033]">
-      {label}
-    </label>
-  </div>
-);
-const NewsletterSection = () => {
   return (
-    <section className="text-center py-16 px-4">
-      <h2 className="text-5xl font-['philosopher',_cursive]  text-black">
-        Want more historic letters?
-      </h2>
-      <p className="mt-2 mb-8 text-xl font-['Ephesis',cursive]  text-black max-w-2xl mx-auto">
-        Join our archive mailing list and never miss an update.
-      </p>
-      <form className="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-xl mx-auto">
-        <input
-          type="email"
-          placeholder="Your email address.."
-          className="bg-[#F5EFE1]/60 rounded-lg border-[#85654c] placeholder:text-[#4A3F35] placeholder:opacity-80 w-full sm:w-80 h-12 px-6  focus:outline-none focus:ring-2 focus:ring-[#A17A5D]"
-          style={{
-            backgroundImage: `url('/images/bg button.webp')`,
-            backgroundSize: "102% 107%",
-          }}
-        />
+    <div className="fixed inset-0 top-14 px-5 lg:px-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+      <div className="bg-[#F7DBB9] rounded-lg max-w-2xl w-full p-8 relative">
+        {/* Close Button */}
         <button
-          type="submit"
-          className="rounded transition-all duration-200 ease-in-out hover:-translate-y-px  px-8 py-3 "
-          style={{
-            backgroundImage: `url('/images/bg button.webp')`,
-            backgroundSize: "100% 103%",
-          }}
+          onClick={onClose}
+          className="absolute text-xl top-4 right-6 cursor-pointer  text-[#4A2C2A] hover:text-black"
         >
-          Shop Now
+          ✕
         </button>
-      </form>
-    </section>
+        {/* Title */}
+        <h2
+          className="text-2xl font-bold text-[#4A2C2A] mb-4 text-center"
+          style={{ fontFamily: "Philosopher, serif" }}
+        >
+          {title}
+        </h2>
+        <div className="text-[#5C4033] leading-relaxed">{children}</div>
+      </div>
+    </div>
   );
 };
 
-const StaticAudioPlayer = () => (
-  <div className="bg-white rounded-full p-2 flex items-center shadow-md w-full max-w-xs">
-    <button
-      className="bg-[#4A2C2A] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 focus:outline-none flex-shrink-0"
-      aria-label="Play Audio"
-    >
-      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-        <path d="M5.5 16.5A1.5 1.5 0 0 1 4 15V5a1.5 1.5 0 0 1 2.25-1.3l8 5a1.5 1.5 0 0 1 0 2.6l-8 5A1.5 1.5 0 0 1 5.5 16.5z"></path>
-      </svg>
-    </button>
-    <div
-      className="flex-grow flex items-center h-full gap-px px-2"
-      aria-hidden="true"
-    >
-      {[
-        4, 8, 6, 10, 7, 12, 8, 10, 6, 8, 5, 4, 3, 5, 6, 8, 10, 7, 5, 4, 8, 6,
-        10, 7, 12, 8, 10, 7, 5, 3, 4, 6,
-      ].map((h, i) => (
-        <div
-          key={i}
-          className="bg-gray-400 w-0.5"
-          style={{ height: `${h}px` }}
-        ></div>
-      ))}
-    </div>
-    <span className="text-sm text-[#4A2C2A] font-mono ml-3">1.00</span>
-  </div>
-);
-
-const FormSection = ({ title, children, className = "" }) => (
-  <div className={`mb-8 ${className}`}>
-    <h2 className="text-2xl font-bold text-[#4A2C2A] mb-6 font-['Philosopher',_serif]">
-      {title}
-    </h2>
-    {children}
-  </div>
-);
-
+// ✅ Main Component
 const SubmissionForm = () => {
-  const [uploadType, setUploadType] = useState("Both");
-  const [letterTranscriptType, setLetterTranscriptType] =
-    useState("Text format");
-  const [letterOwner, setLetterOwner] = useState("No");
-  const [letterAttachment, setLetterAttachment] = useState("Photograph");
-  const [photoOwner, setPhotoOwner] = useState("No");
-  const [photoAttachment, setPhotoAttachment] = useState("Photograph");
-  const [uploaded, setUploaded] = useState("No");
-  const [before2000, setBefore2000] = useState("No");
-  const [activeTab, setActiveTab] = useState("terms"); // 'terms' or 'guidelines'
-  const [acceptedTerms, setAcceptedTerms] = useState(false);
-  const [formError, setFormError] = useState("");
+  const [modalData, setModalData] = useState({ open: false, type: null });
 
-  const handleUploadTypeChange = (e) => setUploadType(e.target.value);
-  const handleTranscriptTypeChange = (e) =>
-    setLetterTranscriptType(e.target.value);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!acceptedTerms) {
-      setFormError("Please accept the terms and conditions");
-    } else {
-      setFormError("");
-      // Handle successful submission
-      alert("Form submitted successfully!");
-    }
-  };
-
-  const renderLetterInfo = uploadType === "Letter" || uploadType === "Both";
-  const renderPhotoInfo = uploadType === "Photographs" || uploadType === "Both";
+  const openModal = (type) => setModalData({ open: true, type });
+  const closeModal = () => setModalData({ open: false, type: null });
 
   return (
-    <div>
-       <div className="flex flex-col items-center justify-center min-h-screen  text-black">
-      {/* Animated Heading */}
-      <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-pulse">
-        ⚙️ Under Process...
-      </h1>
+    <main className="container mx-auto px-5 lg:px-8 py-20">
+      <div className="flex flex-col justify-center items-center gap-10 text-center">
+        <h1 className="text-3xl md:text-[50px] font-['Philosopher',_serif] font-bold text-black">
+          How To Submit Your Letter
+        </h1>
+        <div className=" flex flex-col md:flex-row justify-center items-center gap-6 md:gap-10">
+          <ParchmentButton onClick={() => openModal("terms")}>
+            Terms of Submission
+          </ParchmentButton>
 
-      {/* Subtext */}
-      <p className="text-lg md:text-2xl text-center mb-8">
-        Work in progress — about 70% to 80% complete
-      </p>
-
-      {/* Progress Bar */}
-      <div className="w-64 bg-white/30 rounded-full h-5 overflow-hidden">
-        <div className="bg-green-400 h-5 animate-[progress_3s_ease-in-out_infinite]" 
-             style={{ width: "75%" }}></div>
+          <ParchmentButton onClick={() => openModal("guidelines")}>
+            Submission Guidelines
+          </ParchmentButton>
+        </div>
       </div>
 
-      {/* Loader */}
-      <div className="mt-10 w-14 h-14 border-4 border-[#6E4A27] border-t-transparent rounded-full animate-spin"></div>
-    </div>
-      <div
-        className="min-h-screen hidden w-full bg-cover  bg-fixed font-['Philosopher',_serif,'Ephesis'] max-w-[640px]:bg-inherit  text-[#4A2C2A] bg-section"
-        style={{
-          backgroundImage: "url('/images/bg.webp')",
-          backgroundPosition: "100% 10%",
-        }}
+      <div className="my-20">
+        <Form>
+          <input type="text" placeholder="Your Name" />
+          <textarea placeholder="Your Message"></textarea>
+          <button type="submit">Submit</button>
+        </Form>
+      </div>
+
+      {/* Modal Content */}
+      <Modal
+        isOpen={modalData.open}
+        onClose={closeModal}
+        title={
+          modalData.type === "terms"
+            ? "Terms Of Submission"
+            : modalData.type === "guidelines"
+            ? "Submission Guidelines"
+            : ""
+        }
       >
-        <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <header className="text-center">
-            <h1 className="text-6xl md:text-7xl font-['Philosopher',_serif] font-bold text-black">
-              How To Submit Your Letter
-            </h1>
-            <div className="mt-6 flex justify-center space-x-8">
-              <button
-                onClick={() => setActiveTab("terms")}
-                className={`text-black text-lg font-semibold      p-3 px-4  bg-cover rounded-full `}
-                style={{
-                  backgroundImage: "url('/images/bg button.webp')",
-                  backgroundPosition: "100% 100%",
-                }}
-              >
-                Terms of Submission
-              </button>
-              <button
-                onClick={() => setActiveTab("guidelines")}
-                className={`text-black text-lg font-semibold bg-cover rounded-full transition-colors p-3 px-4 `}
-                style={{
-                  backgroundImage: "url('/images/bg button.webp')",
-                  backgroundPosition: "100% 100%",
-                }}
-              >
-                Submission Guidelines
-              </button>
-            </div>
-          </header>
+        {modalData.type === "terms" && (
+          <div className="text-[#5C4033] leading-relaxed space-y-4 text-left overflow-auto max-h-[70vh]">
+            <p>
+              These Terms of Submission (“Terms”) govern the content that you
+              (“Contributor,” “You,” or “Your”) submit to longlostletters.com
+              (“We,” “Us,” or “Our”). By submitting content, You agree to the
+              following:
+            </p>
 
-          <section
-            className="my-12 max-w-5xl mx-auto p-8 bg-no-repeat bg-cover "
-            style={{ backgroundImage: "url('/images/bg button.webp')" }}
-          >
-            {activeTab === "terms" && (
-              <div className="max-w-3xl mx-auto text-center">
-                <h2 className="text-3xl font-bold text-[#4A2C2A] mb-4 font-['Philosopher',_serif]">
-                  Terms Of Submission
-                </h2>
-                <p className="text-[#5C4033] leading-relaxed text-md">
-                  Khat Khazana Heritage does not claim ownership of any images
-                  or materials submitted by contributors. We do not offer
-                  third-party licensing of any content published on this
-                  platform. Additionally, we never charge any fees to publish
-                  submissions. All materials are shared strictly for
-                  educational, archival, and storytelling purposes, with respect
-                  to the families and individuals who have shared them.
-                </p>
-              </div>
-            )}
-            {activeTab === "guidelines" && (
-              <div className="max-w-3xl mx-auto text-left">
-                <h2 className="text-3xl font-bold text-[#4A2C2A] mb-4 font-['Philosopher',_serif] text-center">
-                  Submission Guidelines
-                </h2>
-                <ul className="text-[#5C4033] leading-relaxed text-md list-disc pl-5 space-y-2">
-                  <li>
-                    Submit scanned photographs – JPEG format, 10” width, 300DPI
-                    resolution.
-                  </li>
-                  <li>
-                    A company with a short narrative or caption that may
-                    include:
-                  </li>
-                  <li className="list-none">
-                    <ul className="list-[circle] pl-5 space-y-1">
-                      <li>Who is in the photo?</li>
-                      <li>Where is the family originally from?</li>
-                      <li>What were their roles or professions?</li>
-                      <li>What was the context or reason behind the photo?</li>
-                    </ul>
-                  </li>
-                  <li>A short written story or background note is required.</li>
-                  <li>
-                    Include as many details as possible: names, year, location,
-                    ethnicity, and occupations.
-                  </li>
-                </ul>
-              </div>
-            )}
-          </section>
+            <p>
+              <strong>1. Eligibility:</strong> You affirm that You are at least
+              18 years of age (or have the consent of a parent/guardian if under
+              18) and that You have full legal capacity to enter into this
+              agreement.
+            </p>
 
-          <section className="max-w-5xl mx-auto p-8 sm:p-12 rounded-2xl shadow-2xl border  border-[#8B4513]/30">
-            <form onSubmit={handleSubmit}>
-              <FormSection title="Personal Information">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-6 ">
-                  <InputField label="Full Name" name="fullName" required />
-                  <InputField
-                    label="Email"
-                    name="email"
-                    type="email"
-                    required
-                  />
-                  <InputField label="Phone" name="phone" />
-                  <InputField label="Current Location" name="location" />
-                  <br />
-                  <div className="md:col-span-2">
-                    <RadioGroup
-                      label="Are you uploading letters or photographs?"
-                      name="uploadType"
-                      required
-                      value={uploadType}
-                      onChange={handleUploadTypeChange}
-                      options={[
-                        { value: "Letter", label: "Letter" },
-                        { value: "Photographs", label: "Photographs" },
-                        { value: "Both", label: "Both" },
-                      ]}
-                    />
-                  </div>
-                </div>
-              </FormSection>
+            <p>
+              <strong>2. Ownership and Rights:</strong> You agree and warrant
+              that You are the owner of the handwritten letter(s),
+              photograph(s), audio file(s), transcript(s), description(s), or
+              any other material You submit (collectively, “Content”). You
+              further warrant that Your submission does not infringe upon the
+              rights of any third party, including intellectual property,
+              privacy, or publicity rights. By submitting Content, You grant
+              longlostletters.com a non-exclusive, royalty-free, worldwide,
+              perpetual license to reproduce, publish, display, distribute,
+              archive, and otherwise use the Content on any platform, including
+              but not limited to Our website, social media channels, and print
+              materials. You retain ownership of Your Content but authorize Us
+              to use it as described above without the need for additional
+              consent or compensation.
+            </p>
 
-              {renderLetterInfo && (
-                <FormSection title="Letter Information">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-6">
-                    <InputField label="Title" name="letterTitle" required />
-                    <InputField label="Year" name="letterYear" required />
-                    <InputField
-                      label="Language"
-                      name="letterLanguage"
-                      required
-                    />
-                    <InputField
-                      label="Place Taken"
-                      name="letterPlace"
-                      required
-                    />
-                    <InputField
-                      label="Category"
-                      name="letterCategory"
-                      required
-                    />
-                    <InputField
-                      label="Photograph Caption"
-                      name="letterCaption"
-                      required
-                    />
-                    <RadioGroup
-                      label="Are you the guardian/owner?"
-                      name="letterOwner"
-                      required
-                      options={[
-                        { value: "Yes", label: "Yes" },
-                        { value: "No", label: "No" },
-                      ]}
-                      value={letterOwner}
-                      onChange={(e) => setLetterOwner(e.target.value)}
-                    />
-                    <RadioGroup
-                      label="Attachment Type"
-                      name="letterAttachment"
-                      required
-                      options={[
-                        { value: "Photograph", label: "Photograph" },
-                        { value: "Letter", label: "Letter" },
-                        { value: "Other", label: "Other" },
-                      ]}
-                      value={letterAttachment}
-                      onChange={(e) => setLetterAttachment(e.target.value)}
-                    />
-                    <div className="">
-                      <FileInput
-                        label="Upload Image (JPEG)"
-                        name="letterImage"
-                        subtext="Hi Res Jpegs only. 10” width scanned in 300 DPI (Max 5MB)"
-                        required
-                      />
-                    </div>
-                  </div>
-                </FormSection>
-              )}
+            <p>
+              <strong>3. Right to Reject Submissions:</strong> We reserve the
+              right to reject, remove, or decline to publish any submission for
+              any reason whatsoever, at Our sole discretion. By submitting
+              Content, You expressly agree that You have no right to challenge,
+              dispute, or contest Our decision to accept or reject Your
+              submission.
+            </p>
 
-              {renderPhotoInfo && (
-                <FormSection title="Photographs Information">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-6">
-                    <InputField label="Title" name="photoTitle" required />
-                    <InputField label="Year" name="photoYear" required />
-                    <InputField
-                      label="Language"
-                      name="photoLanguage"
-                      required
-                    />
-                    <InputField
-                      label="Place Taken"
-                      name="photoPlace"
-                      required
-                    />
-                    <InputField
-                      label="Category"
-                      name="photoCategory"
-                      required
-                      className="md:col-span-2"
-                    />
-                    <InputField
-                      label="Photograph Caption"
-                      name="photoCaption"
-                      required
-                      className="md:col-span-2"
-                    />
-                    <RadioGroup
-                      label="Are you the guardian/owner?"
-                      name="photoOwner"
-                      required
-                      options={[
-                        { value: "Yes", label: "Yes" },
-                        { value: "No", label: "No" },
-                      ]}
-                      value={photoOwner}
-                      onChange={(e) => setPhotoOwner(e.target.value)}
-                    />
-                    <RadioGroup
-                      label="Attachment Type"
-                      name="photoAttachment"
-                      required
-                      options={[
-                        { value: "Photograph", label: "Photograph" },
-                        { value: "Letter", label: "Letter" },
-                        { value: "Other", label: "Other" },
-                      ]}
-                      value={photoAttachment}
-                      onChange={(e) => setPhotoAttachment(e.target.value)}
-                    />
-                    <div className="">
-                      <FileInput
-                        label="Upload Image (JPEG)"
-                        name="photoImage"
-                        subtext="Hi Res Jpegs only. 10” width scanned in 300 DPI (Max 5MB)"
-                        required
-                      />
-                    </div>
-                  </div>
-                </FormSection>
-              )}
+            <p>
+              <strong>4. Limitation of Liability:</strong> Once Content is
+              published on Our platform(s), We cannot control or prevent third
+              parties from copying, downloading, misusing, or distributing it
+              elsewhere. By submitting Content, You agree that
+              longlostletters.com, its affiliates, and representatives cannot be
+              held responsible or liable for any unauthorized use, reproduction,
+              or distribution of Your Content by third parties.
+            </p>
 
-              <FormSection title="About The Image">
-                <div className="space-y-8 ">
-                  <div className="flex flex-col md:flex-row gap-8">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8  items-start">
-                      <div className="md:col-span-2">
-                        <FileInput
-                          label="Upload Image (JPEG)"
-                          name="aboutImage"
-                          subtext="Hi Res Jpegs only. 10” width scanned in 300 DPI (Max 5MB)"
-                          required
-                        />
-                      </div>
-                      <div className="w-32 h-32 bg-[#E0D4B6] rounded-md flex items-center justify-center p-2">
-                        <img
-                          src="https://i.ibb.co/3k5fJgB/1.png"
-                          alt="Upload preview"
-                          className="w-16 h-16 opacity-100"
-                        />
-                      </div>
-                    </div>
-                    <div>
-                      <label className="font-bold text-sm mb-2 block">
-                        Upload Audio (MP3){" "}
-                        <span className="text-red-600">*</span>
-                      </label>
-                      <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
-                        <FileInput
-                          label=""
-                          name="audioFile"
-                          subtext="Only MP3 Fomate (Max 5MB)"
-                        />
-                        <StaticAudioPlayer />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex flex-row justify-between gap-3">
-                    {/* Default input height */}
-                    <InputField
-                      wrapperClassName="w-1/2"
-                      className="h-24"
-                      label="Letter Transcript"
-                      name="Letter-Transcript"
-                      required
-                    />
+            <p>
+              <strong>5. Prohibited Content:</strong> You may not submit Content
+              that includes or promotes: Material directed against any religion,
+              sect, political party, organization, or individual. Nudity,
+              vulgarity, obscenity, or offensive material. Any unlawful,
+              defamatory, harassing, discriminatory, or otherwise inappropriate
+              material. Submissions violating these standards may be removed at
+              Our sole discretion without notice.
+            </p>
 
-                    {/* Taller input (still input, not textarea) */}
-                    <InputField
-                      wrapperClassName="w-1/2 "
-                      className="h-24"
-                      label="Narrative (Optional)"
-                      name="narrative"
-                    />
-                  </div>
-                </div>
-              </FormSection>
+            <p>
+              <strong>6. Editorial Rights:</strong> We reserve the right, at Our
+              sole discretion, to review, format, reject, or remove any
+              submission, in whole or in part, at any time.
+            </p>
 
-              <FormSection title="Verification">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-6">
-                  <RadioGroup
-                    label="Have you uploaded an image / Letter?"
-                    name="uploaded"
-                    options={[
-                      { value: "Yes", label: "Yes" },
-                      { value: "No", label: "No" },
-                    ]}
-                    value={uploaded}
-                    onChange={(e) => setUploaded(e.target.value)}
-                  />
-                  <RadioGroup
-                    label="Is the image from before 2000?"
-                    name="before2000"
-                    options={[
-                      { value: "Yes", label: "Yes" },
-                      { value: "No", label: "No" },
-                    ]}
-                    value={before2000}
-                    onChange={(e) => setBefore2000(e.target.value)}
-                  />
-                  <div className=" ">
-                    <RadioGroup
-                      label="Please Accept the Terms & Conditions"
-                      name="terms"
-                      options={[
-                        { value: "true", label: "Yes" },
-                        { value: "false", label: "No" },
-                      ]}
-                      value={acceptedTerms ? "true" : "false"} // bind as string
-                      onChange={(e) =>
-                        setAcceptedTerms(e.target.value === "true")
-                      } // convert back to boolean
-                    />
-                  </div>
-                </div>
-              </FormSection>
+            <p>
+              <strong>No Compensation:</strong> Unless explicitly agreed in
+              writing: You will not be entitled to any financial or other
+              compensation for Your submissions.
+            </p>
 
-              {formError && (
-                <div className="relative before:content-['•'] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 my-6 text-start bg-transparent  border border-red-400 text-red-700 px-2 py-2 rounded-lg">
-                  <p>{formError}</p>
-                </div>
-              )}
+            <p>
+              <strong>7. Privacy and Personal Information:</strong> Do not
+              include personal, sensitive, or confidential information (such as
+              phone numbers, or financial data) in Your submissions. You
+              understand that any personal information voluntarily included in
+              Your Content is shared publicly at Your own risk.
+            </p>
 
-              <div className="mt-10">
-                <button
-                  type="submit"
-                  className="w-full bg-[#4A2C2A] text-white font-bold text-lg py-3 px-6 rounded-lg hover:bg-[#D4A017] transition-colors duration-300 shadow-lg"
-                >
-                  Submit
-                </button>
-              </div>
-            </form>
-          </section>
-        </main>
-        <NewsletterSection />
-      </div>
-    </div>
+            <p>
+              <strong>8. Indemnification:</strong> You agree to indemnify,
+              defend, and hold harmless longlostletters.com, its owners,
+              affiliates, and their respective officers, employees, and agents
+              from and against any and all claims, liabilities, damages, losses,
+              or expenses (including reasonable attorneys’ fees) arising out of
+              or in connection with Your submission or breach of these Terms.
+            </p>
+
+            <p>
+              <strong>9. Governing Law and Jurisdiction:</strong> These Terms
+              shall be governed by and construed in accordance with the laws of
+              United States of America. Any disputes arising under or in
+              connection with these Terms shall be subject to the exclusive
+              jurisdiction of the courts located in Plano, TX 75074.
+            </p>
+
+            <p>
+              <strong>10. Changes to Terms:</strong> We reserve the right to
+              update or modify these Terms at any time without prior notice. The
+              updated version will be posted on this page and will apply to all
+              future submissions.
+            </p>
+
+            <p>
+              <strong>Checkbox Version for Online Forms:</strong> [ ] I confirm
+              that I have read and agreed to the Terms of Submission, and that I
+              am the sole owner (or authorized rights holder) of the content I
+              am submitting. I grant longlostletters.com the right to use,
+              publish, archive, or reject my submission in accordance with those
+              Terms.
+            </p>
+          </div>
+        )}
+
+        {modalData.type === "guidelines" && (
+          <div className="text-[#5C4033] leading-relaxed space-y-4 text-left overflow-auto max-h-[70vh]">
+            <p>
+              Thank you for contributing to our archive of handwritten letters
+              and analog photographs. To help us preserve your memories in the
+              highest quality and ensure they remain accessible for future
+              generations, please follow the guidelines below.
+            </p>
+
+            <h3 className="text-xl font-bold mt-4">1. Letters</h3>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>Submit clear scans or photographs of your letters.</li>
+              <li>
+                Ensure handwriting is legible and that the entire page (edges
+                included) is visible.
+              </li>
+              <li>Avoid shadows, glare, or cropped corners.</li>
+              <li>
+                If submitting multiple pages, please number or name them in
+                sequence.
+              </li>
+            </ul>
+
+            <h3 className="text-xl font-bold mt-4">2. Photographs</h3>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>Resolution must be at least 1200 x 1800 pixels (300 DPI).</li>
+              <li>
+                Images should be sharp, in focus, and free from heavy blur or
+                pixelation.
+              </li>
+              <li>Accepted file formats: JPEG, PNG, or TIFF.</li>
+              <li>
+                If scanning, please clean the scanner glass to prevent smudges
+                or dust marks.
+              </li>
+              <li>
+                Do not apply filters or alterations that change the authenticity
+                of the image.
+              </li>
+            </ul>
+
+            <h3 className="text-xl font-bold mt-4">
+              3. Audio Recordings (Optional)
+            </h3>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>
+                You may submit an audio file of your letter being read aloud or
+                a short background story about the photograph/letter.
+              </li>
+              <li>Accepted formats: MP3, WAV, or AAC.</li>
+              <li>Ensure recordings are clear and audible.</li>
+            </ul>
+
+            <h3 className="text-xl font-bold mt-4">4. File Naming</h3>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>
+                To help us organize the archive, please name your files in a
+                clear and descriptive way, for example:
+              </li>
+              <li className="ml-5 list-[circle]">Letter_Grandfather_1965</li>
+              <li className="ml-5 list-[circle]">Photo_Wedding_1972</li>
+            </ul>
+
+            <h3 className="text-xl font-bold mt-4">
+              5. Additional Information (Optional but Encouraged)
+            </h3>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>Date or approximate year</li>
+              <li>Location (city, country, or landmark)</li>
+              <li>Names of people involved</li>
+              <li>A brief description of the occasion or memory</li>
+            </ul>
+
+            <h3 className="text-xl font-bold mt-4">
+              6. Quick Checklist Before Submitting
+            </h3>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>✔ Letters: Full page, legible, no glare or blur</li>
+              <li>
+                ✔ Photographs: Minimum 1200 x 1800 px, JPEG/PNG/TIFF, authentic
+                and clear
+              </li>
+              <li>✔ Audio: MP3/WAV/AAC, clear recordings (optional)</li>
+              <li>✔ File Naming: Use descriptive names</li>
+              <li>
+                ✔ Extra Info: Date, place, short description (optional but
+                helpful)
+              </li>
+            </ul>
+
+            <p className="mt-4">
+              ✨ By carefully preparing your submission, you help ensure that
+              your memories are preserved with the clarity, dignity, and
+              authenticity they deserve. Thank you for being part of this
+              archive.
+            </p>
+          </div>
+        )}
+      </Modal>
+    </main>
   );
 };
 
