@@ -54,7 +54,7 @@ function Aboutus() {
       {/* ✅ Zoom Modal */}
       {selectedImage && (
         <div
-          className="fixed inset-0 top-14 bg-black/80 flex justify-center items-center z-50"
+          className="fixed inset-0 top-14 bg-black/80 flex justify-center items-center z-50 t"
           onClick={() => setSelectedImage(null)}
         >
           <div className="relative">
