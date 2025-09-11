@@ -8,8 +8,6 @@ import StaticAudioPlayer from "./StaticAudioPlayer";
 
 const Form = () => {
   const [uploadType, setUploadType] = useState("Both");
-  const [letterTranscriptType, setLetterTranscriptType] =
-    useState("Text format");
   const [letterOwner, setLetterOwner] = useState("No");
   const [letterAttachment, setLetterAttachment] = useState("Photograph");
   const [photoOwner, setPhotoOwner] = useState("No");
@@ -18,20 +16,39 @@ const Form = () => {
   const [before2000, setBefore2000] = useState("No");
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [formError, setFormError] = useState("");
+  const [narrativeFormat, setNarrativeFormat] = useState("text"); // default text
 
   const handleUploadTypeChange = (e) => setUploadType(e.target.value);
-  const handleTranscriptTypeChange = (e) =>
-    setLetterTranscriptType(e.target.value);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (!acceptedTerms) {
       setFormError("Please accept the terms and conditions");
-    } else {
-      setFormError("");
-      // Handle successful submission
-      alert("Form submitted successfully!");
+      return;
     }
+
+    // Collect all data from the form
+    const formData = new FormData(e.target); // target = form element
+    const data = Object.fromEntries(formData.entries()); // converts to object
+
+    console.log("Form Data:", data); // 👈 you now have everything
+
+    alert("Form submitted successfully!");
+
+    // Reset the form HTML fields
+    e.target.reset();
+
+    // Reset React states also
+    setUploadType("Both");
+    setLetterOwner("No");
+    setLetterAttachment("Photograph");
+    setPhotoOwner("No");
+    setPhotoAttachment("Photograph");
+    setUploaded("No");
+    setBefore2000("No");
+    setAcceptedTerms(false);
+    setNarrativeFormat("text");
   };
 
   const renderLetterInfo = uploadType === "Letter" || uploadType === "Both";
@@ -67,10 +84,7 @@ const Form = () => {
         {renderLetterInfo && (
           <FormSection title="Letter Information">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-6">
-              <InputField label="Title" name="letterTitle" required />
-              <InputField label="Year" name="letterYear" required />
               <InputField label="Language" name="letterLanguage" required />
-              <InputField label="Place Taken" name="letterPlace" required />
               <InputField label="Category" name="letterCategory" required />
               <InputField
                 label="Photograph Caption"
@@ -106,6 +120,7 @@ const Form = () => {
                   name="letterImage"
                   subtext="Hi Res Jpegs only. 10” width scanned in 300 DPI (Max 5MB)"
                   required
+                  previewType="image" // 👈 important
                 />
               </div>
             </div>
@@ -169,24 +184,17 @@ const Form = () => {
         <FormSection title="About The Image">
           <div className="space-y-8 ">
             <div className="flex flex-col md:flex-row gap-8">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8  items-start">
-                <div className="md:col-span-2">
-                  <FileInput
-                    label="Upload Image (JPEG)"
-                    name="aboutImage"
-                    subtext="Hi Res Jpegs only. 10” width scanned in 300 DPI (Max 5MB)"
-                    required
-                  />
-                </div>
-                <div className="w-32 h-32 bg-[#E0D4B6] rounded-md flex items-center justify-center p-2">
-                  <img
-                    src="https://i.ibb.co/3k5fJgB/1.png"
-                    alt="Upload preview"
-                    className="w-16 h-16 opacity-100"
-                  />
-                </div>
+              <div className="w-[50%]">
+                <FileInput
+                  label="Upload Image (JPEG)"
+                  name="aboutImage"
+                  subtext="Hi Res Jpegs only. 10” width scanned in 300 DPI (Max 5MB)"
+                  required
+                  previewType="image" // 👈 important
+                />
               </div>
-              <div>
+
+              <div className="w-[50%]">
                 <label className="font-bold text-sm mb-2 block">
                   Upload Audio (MP3) <span className="text-red-600">*</span>
                 </label>
@@ -195,24 +203,67 @@ const Form = () => {
                     label=""
                     name="audioFile"
                     subtext="Only MP3 Fomate (Max 5MB)"
+                    previewType="audio"
                   />
-                  <StaticAudioPlayer src="/audio/sample.mp3" duration="1:00" />
                 </div>
               </div>
             </div>
-            <div className="flex flex-row justify-between gap-3">
-              {/* Default input height */}
-              <InputField
-                wrapperClassName="w-1/2"
-                className="h-24"
-                label="Letter Transcript"
-                name="Letter-Transcript"
-                required
-              />
+
+            <div className="flex flex-col md:flex-row justify-between gap-3 ">
+              <div className="flex flex-col md:w-[50%] w-full">
+                <div className="flex justify-between">
+                  <label className="font-bold text-sm  block">
+                    Letter Transcript <span className="text-red-600">*</span>
+                  </label>
+                  {/* Radio buttons for narrative choice */}
+                  <span className="flex gap-4 text-sm">
+                    <label className="flex items-center gap-2">
+                      <input
+                        type="radio"
+                        name="narrativeFormat"
+                        value="text"
+                        checked={narrativeFormat === "text"}
+                        onChange={() => setNarrativeFormat("text")}
+                      />
+                      Text
+                    </label>
+
+                    <label className="flex items-center gap-2">
+                      <input
+                        type="radio"
+                        name="narrativeFormat"
+                        value="audio"
+                        checked={narrativeFormat === "audio"}
+                        onChange={() => setNarrativeFormat("audio")}
+                      />
+                      Audio
+                    </label>
+                  </span>
+                </div>
+
+                {/* Narrative (Conditional rendering based on radio) */}
+                <div className="w-full">
+                  {narrativeFormat === "text" ? (
+                    <InputField
+                      wrapperClassName="w-full "
+                      className="h-24"
+                      name="narrative"
+                    />
+                  ) : (
+                    <FileInput
+                      name="audioFile"
+                      subtext="Only MP3 Format (Max 5MB)"
+                      previewType="audio"
+                      className="mt-5"
+                      previewType="audio"
+                    />
+                  )}
+                </div>
+              </div>
 
               {/* Taller input (still input, not textarea) */}
               <InputField
-                wrapperClassName="w-1/2 "
+                wrapperClassName="w-full md:w-1/2 "
                 className="h-24"
                 label="Narrative (Optional)"
                 name="narrative"
@@ -259,7 +310,7 @@ const Form = () => {
         </FormSection>
 
         {formError && (
-          <div className="relative before:content-['•'] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 my-6 text-start bg-transparent  border border-red-400 text-red-700 px-2 py-2 rounded-lg">
+          <div className="relative my-10 text-start font-semibold border border-[#6E4A27] text-[#6E4A27] px-4 py-2 rounded-lg">
             <p>{formError}</p>
           </div>
         )}
