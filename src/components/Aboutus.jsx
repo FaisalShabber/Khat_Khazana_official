@@ -16,8 +16,8 @@ function Aboutus() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-cover bg-center flex justify-center items-start my-10 lg:my-20">
-      <div className="flex flex-col gap-10 lg:gap-20 w-[95%] md:w-[90%] xl:w-[80%]  text-center ">
+    <div className="min-h-screen bg-cover bg-center flex justify-center items-start my-10 lg:my-20 ">
+      <div className="flex flex-col gap-10 lg:gap-20 w-[95%] md:w-[90%] xl:w-[80%]  text-center max-w-[1270px]">
         {/* ✅ About Page Header Image */}
         <div>
           <img
