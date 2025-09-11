@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from "react";
 import ParchmentButton from "./InnerComponents/ParchmentButton";
 import Form from "./InnerComponents/SubmissionForm/Form";

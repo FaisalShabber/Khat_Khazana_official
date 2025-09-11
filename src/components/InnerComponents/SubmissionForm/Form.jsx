@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from "react";
 import FormSection from "./FormSection";
 import InputField from "./InputField";
@@ -15,7 +16,6 @@ const Form = () => {
   const [photoAttachment, setPhotoAttachment] = useState("Photograph");
   const [uploaded, setUploaded] = useState("No");
   const [before2000, setBefore2000] = useState("No");
-  const [activeTab, setActiveTab] = useState("terms"); // 'terms' or 'guidelines'
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [formError, setFormError] = useState("");
 
