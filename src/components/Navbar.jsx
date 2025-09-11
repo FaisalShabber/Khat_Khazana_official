@@ -31,7 +31,7 @@ export default function Navbar() {
         backgroundSize: "100% 100%",
       }}
     >
-      <div className="mx-auto w-full px-5 lg:px-20 py-2 flex items-center justify-between z-50">
+      <div className="mx-auto w-full px-5 xl:px-20 py-2 flex items-center justify-between z-50">
         {/* LEFT: Logo */}
         <Link
           to="/"
@@ -142,7 +142,7 @@ export default function Navbar() {
           >
             Contact Us
           </Link>
-              <Link
+          <Link
             to="/contact"
             className="hidden  bg-[#6E4A27] text-white font-bold px-7 leading-8 py-2 xl:flex justify-center items-center text-center rounded-full transition"
           >

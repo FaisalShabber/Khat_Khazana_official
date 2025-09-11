@@ -45,7 +45,7 @@ function Aboutus() {
           ))}
         </div>
 
-        {/* ✅ Input & Button */}
+       
         <div>
           <Subcription />
         </div>
