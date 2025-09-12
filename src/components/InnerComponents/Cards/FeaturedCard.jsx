@@ -1,14 +1,14 @@
+// @ts-nocheck
 import React from "react";
 import { Link } from "react-router-dom";
 
 const FeaturedCard = ({
   to = "#",
-  img,
   overlay,
   title = "Want more historic letters?",
   description = "Join our archive mailing list and never miss an update.",
   className = "",
-  isFeatured = true, // naya prop add kiya
+  isFeatured = true,
 }) => {
   return (
     <Link to={to}>
@@ -17,7 +17,7 @@ const FeaturedCard = ({
       >
         {/* Card Background Image */}
         <img
-          src={img}
+          src="/images/Card.webp"
           alt="Card Background"
           loading="eager"
           className="absolute inset-0 w-full h-full object-cover rounded-[20px]"
@@ -33,13 +33,27 @@ const FeaturedCard = ({
           </span>
         )}
 
-        {/* Overlay Image */}
-        <div className="flex justify-center z-10 pt-[30px] relative">
+        {/* Overlay Container */}
+        <div className="relative flex justify-center z-10 pt-[30px]">
+          {/* Overlay Image */}
           <img
             src={overlay}
             alt="Overlay"
             loading="eager"
             className="object-contain group-hover:drop-shadow-xl transition-all duration-300 w-[310px] h-[250px]"
+          />
+
+          {/* ✅ Watermark Image (Full Overlay Area) */}
+          <img
+            src="/images/Vector.webp"
+            alt="Watermark"
+            className="
+            absolute 
+            top-14 left-12
+            w-[250px] h-[200px]   /* same size as overlay */
+            opacity-20        /* adjust transparency */
+            object-cover          /* cover full area */
+            pointer-events-none select-none "
           />
         </div>
 

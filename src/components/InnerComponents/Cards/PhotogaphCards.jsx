@@ -10,25 +10,25 @@ import PhotographCard from "./PhotographCard";
 const cards = [
   {
     img: "/images/Card.webp",
-    overlay: "/images/Group 1000005552 (1).webp",
+    overlay: "/images/image1.webp",
     title: "Want more historic letters?",
     description: "Join our archive mailing list and never miss an update.",
   },
   {
     img: "/images/Card.webp",
-    overlay: "/images/Group 1000005552 (2).webp",
+    overlay: "/images/image2.webp",
     title: "Exclusive Archive",
     description: "Discover unique historic letters curated for you.",
   },
   {
     img: "/images/Card.webp",
-    overlay: "/images/Group 1000005552 (3).webp",
+    overlay: "/images/image3.webp",
     title: "Stay Updated",
     description: "Be the first to receive our new letter collections.",
   },
   {
     img: "/images/Card.webp",
-    overlay: "/images/Group 1000005552 (1).webp",
+    overlay: "/images/image4.webp",
     title: "More Insights",
     description: "Explore the untold stories in our collection.",
   },

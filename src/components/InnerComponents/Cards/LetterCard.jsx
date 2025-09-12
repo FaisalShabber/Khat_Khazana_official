@@ -1,9 +1,9 @@
+// @ts-nocheck
 import React from "react";
 import { Link } from "react-router-dom";
 
 const LetterCard = ({
   to = "#",
-  img,
   overlay,
   title = "Want more historic letters?",
   description = "Join our archive mailing list and never miss an update.",
@@ -16,49 +16,41 @@ const LetterCard = ({
       >
         {/* Card Background Image */}
         <img
-          src={img}
+          src="/images/Card.webp"
           alt="Card Background"
-          loading="eager" // isse turant load hoga
+          loading="eager"
           className="absolute inset-0 w-full h-full object-cover rounded-[20px]"
         />
 
-        {/* Overlay Image */}
-        <div className="flex justify-center z-10 pt-[30px] relative">
+        <div className="relative flex justify-center z-10 pt-[30px]">
+          {/* Overlay Image */}
           <img
             src={overlay}
             alt="Overlay"
-            loading="eager" // isse turant load hoga
-            className="object-contain group-hover:drop-shadow-xl  transition-all duration-300 w-[310px] h-[250px]"
+            loading="eager"
+            className="object-contain group-hover:drop-shadow-xl transition-all duration-300 w-[310px] h-[250px]"
+          />
+
+          {/* ✅ Watermark Image (Full Overlay Area) */}
+          <img
+            src="/images/Vector.webp"
+            alt="Watermark"
+            className="
+            absolute 
+            top-14 left-12
+            w-[250px] h-[200px]   /* same size as overlay */
+            opacity-20        /* adjust transparency */
+            object-cover          /* cover full area */
+            pointer-events-none select-none "
           />
         </div>
 
         {/* Bottom Text */}
-        <div
-          className="absolute text-left"
-          style={{
-            width: "310px",
-            height: "27px",
-            top: "300px",
-            left: "23px",
-          }}
-        >
-          <h2
-            className="text-[24px] sm:text-base lg:text-xl font-semibold text-black mb-1 truncate w-full "
-            style={{ fontFamily: "philosopher" }}
-          >
+        <div className="absolute left-[23px] top-[300px] w-[310px] text-left">
+          <h2 className="text-[24px] sm:text-base lg:text-xl font-semibold text-black mb-1 truncate font-[philosopher]">
             {title}
           </h2>
-          <p
-            className="font-ephesis line-clamp-2"
-            style={{
-              fontFamily: "Ephesis",
-              fontWeight: 400,
-              fontSize: "20px",
-              lineHeight: "100%",
-              color: "#000000",
-              margin: 0,
-            }}
-          >
+          <p className="font-[Ephesis] font-normal text-[20px] leading-[100%] text-black m-0 line-clamp-2">
             {description}
           </p>
         </div>

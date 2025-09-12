@@ -45,7 +45,6 @@ function Aboutus() {
           ))}
         </div>
 
-       
         <div>
           <Subcription />
         </div>
@@ -54,17 +53,10 @@ function Aboutus() {
       {/* ✅ Zoom Modal */}
       {selectedImage && (
         <div
-          className="fixed inset-0 top-14 bg-black/80 flex justify-center items-center z-50 t"
+          className="fixed inset-0 top-14 bg-black/80 flex justify-center items-center z-50"
           onClick={() => setSelectedImage(null)}
         >
           <div className="relative">
-            {/* Close Button */}
-            {/* <button
-              className="absolute top-2 right-2 bg-white rounded-full px-3 py-1 text-black font-bold shadow-lg"
-              onClick={() => setSelectedImage(null)}
-            >
-              ✕
-            </button> */}
             <img
               src={selectedImage}
               alt="Zoomed"

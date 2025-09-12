@@ -51,6 +51,10 @@ const SubmissionForm = () => {
           <ParchmentButton onClick={() => openModal("guidelines")}>
             Submission Guidelines
           </ParchmentButton>
+
+          <ParchmentButton onClick={() => openModal("notice")}>
+            ⚠️ Important Notice
+          </ParchmentButton>
         </div>
       </div>
 
@@ -286,6 +290,20 @@ const SubmissionForm = () => {
               your memories are preserved with the clarity, dignity, and
               authenticity they deserve. Thank you for being part of this
               archive.
+            </p>
+          </div>
+        )}
+
+        {/* Important Notice */}
+        {modalData.type === "notice" && (
+          <div className="text-[#5C4033] leading-relaxed space-y-4 text-left overflow-auto max-h-[70vh] capitalize">
+            <p>
+              For letters, Please include either a{" "}
+              <strong>typed/clearly written version</strong> or an{" "}
+              <strong>audio recording</strong> of the text. Submissions without
+              one of these may be   <strong>Rejected if the{" "} </strong>
+              <strong>Handwriting is not legible</strong> . Adding one ensures
+              your contribution can be properly preserved and shared.
             </p>
           </div>
         )}

@@ -1,14 +1,14 @@
+// @ts-nocheck
 import React from "react";
-import FeaturedCard from "./Cards/FeaturedCard";
 import PhotographFeaturedCard from "./Cards/PhotographFeaturedCard";
 
 // Dummy Data (isko API ya props se bhi le sakte ho)
 const cards = [
   {
-    img: "/images/Card.webp",
-    overlay: "/images/Group 1000005552 (1).webp",
-    title: "Want more historic letters?",
-    description: "Join our archive mailing list and never miss an update.",
+    overlay: "/images/image1.webp",
+    title: "Historic Letter 1",
+    description:
+      "A glimpse into the past with rare documents and timeless stories.",
   },
 ];
 
@@ -35,10 +35,9 @@ const TestimonialPhotographCard = ({ name, designation, description }) => {
       {/* Right Image Block */}
 
       <PhotographFeaturedCard
-        key={card.id}
-        overlayImg={card?.overlay}
-        title={card.title}
-        description={card.description}
+        overlayImg={card.overlay} // ✅ current card ka overlay
+        title={card.title || "Default Title"} // ✅ dynamic title agar ho
+        description={card.description || "Default description"} // ✅ dynamic desc agar ho
       />
     </div>
   );

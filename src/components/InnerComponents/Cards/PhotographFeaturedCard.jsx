@@ -1,9 +1,10 @@
+// @ts-nocheck
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const PhotographFeaturedCard = ({
   to = "#",
-  overlayImg = "/images/sample.jpg", // overlay image prop
+  overlayImg, // overlay image prop
   title = "Want more historic letters?", // heading prop
   description = "Join our archive mailing list and never miss an update.", // description prop
   isFeatured = true, // naya prop add kiya
@@ -35,12 +36,20 @@ const PhotographFeaturedCard = ({
           />
         </div>
 
-        {/* Overlay Image */}
+        {/* Overlay Container */}
         <div className="absolute z-20 top-[60px] left-[50px] w-[250px] h-[180px]">
+          {/* Overlay Image */}
           <img
             src={overlayImg}
             alt="Overlay"
             className="w-full h-full object-cover"
+          />
+
+          {/* ✅ Watermark Image */}
+          <img
+            src="/images/Vector.webp" // apni watermark image ka path
+            alt="Watermark"
+            className="absolute top-2 left-8 w-[180px] h-[180px] object-contain  opacity-20 pointer-events-none select-none"
           />
         </div>
 

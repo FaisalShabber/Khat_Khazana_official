@@ -23,7 +23,7 @@ const ThumbnailCards = () => {
         className="text-lg sm:text-xl font-bold mb-4 text-center"
         style={{ fontFamily: "philosopher" }}
       >
-        Related Thumbnails
+        Related Letters
       </h2>
 
       {/* Cards Loop */}

@@ -5,6 +5,7 @@ import {
   FaInstagram,
   FaLinkedinIn,
 } from "react-icons/fa";
+import EmailOrPhone from "./InnerComponents/EmailOrPhone";
 
 export default function Footer() {
   const QUICK_LINKS = [
@@ -20,12 +21,14 @@ export default function Footer() {
   ];
 
   const SUPPORT_INFO = [
-    { label: "Email: info@example.com" },
-    { label: "Location: 123 Main St, City" },
-    { label: "Phone: +123 456 7890" },
+    { label: "Email: info@example.com", href: "mailto:info@example.com" },
+    {
+      label: "Location: 123 Main St, City",
+      href: "https://maps.google.com/?q=123 Main St, City",
+    },
+    { label: "Phone: +123 456 7890", href: "tel:+1234567890" },
     { label: "Working Hours: Mon–Fri, 9am–6pm" },
   ];
-
   const SOCIAL_LINKS = [
     { icon: <FaLinkedinIn />, href: "#", label: "LinkedIn" },
     { icon: <FaInstagram />, href: "#", label: "Instagram" },
@@ -47,7 +50,7 @@ export default function Footer() {
         backgroundImage: "url('/images/updated_bg.webp')",
         backgroundRepeat: "repeat",
         backgroundSize: "cover",
-          backgroundPosition: "bottom",   // neeche align
+        backgroundPosition: "bottom", // neeche align
         boxShadow: "0 0 10px rgba(0, 0, 0, 0.3)",
       }}
     >
@@ -110,7 +113,15 @@ export default function Footer() {
             </h3>
             <ul className="space-y-1 font-['Ephesis'] text-lg md:text-[24px] font-normal">
               {SUPPORT_INFO.map((info, i) => (
-                <li key={i}>{info.label}</li>
+                <li key={i}>
+                  {info.href ? (
+                    <a href={info.href} className="hover:underline">
+                      {info.label}
+                    </a>
+                  ) : (
+                    info.label
+                  )}
+                </li>
               ))}
             </ul>
           </div>

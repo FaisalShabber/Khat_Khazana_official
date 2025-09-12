@@ -255,7 +255,6 @@ const Form = () => {
                       subtext="Only MP3 Format (Max 5MB)"
                       previewType="audio"
                       className="mt-5"
-                      previewType="audio"
                     />
                   )}
                 </div>

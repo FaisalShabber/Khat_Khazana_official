@@ -5,12 +5,13 @@ const Homepage = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="w-full container min-h-screen relative bg-black overflow-hidden">
+    <section className="w-full container relative bg-black overflow-hidden">
       {/* 🔹 Video Section */}
       <video
         className="
           w-full 
        h-[410px]
+        lg:h-[500px]
           object-cover
           block
           align-top

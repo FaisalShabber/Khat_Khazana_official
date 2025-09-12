@@ -6,6 +6,8 @@ const PhotographCard = ({
   overlayImg = "/images/sample.jpg", // overlay image prop
   title = "Want more historic letters?", // heading prop
   description = "Join our archive mailing list and never miss an update.", // description prop
+  watermarkText = "© Khat Khazana", // watermark text
+  watermarkImg = "", // optional watermark image
 }) => {
   const navigate = useNavigate();
 
@@ -13,10 +15,10 @@ const PhotographCard = ({
     <Link to={to} className="mx-auto">
       <div
         onClick={() => navigate(to)}
-        className="relative text-center overflow-hidden  cursor-pointer w-[350px] h-[410px] rounded-[20px] p-[30px_10px] bg-[url('/images/Card.webp')] bg-cover bg-center"
+        className="relative text-center overflow-hidden cursor-pointer w-[350px] h-[410px] rounded-[20px] p-[30px_10px] bg-[url('/images/Card.webp')] bg-cover bg-center"
       >
         {/* Frame */}
-        <div className="absolute  top-[30px] left-1/2 -translate-x-1/2 w-[300px] h-[250px] z-30">
+        <div className="absolute top-[30px] left-1/2 -translate-x-1/2 w-[300px] h-[250px] z-30">
           <img
             src="/images/Vertical-Frame.webp"
             alt="Frame"
@@ -33,11 +35,25 @@ const PhotographCard = ({
           />
         </div>
 
-        {/* Bottom Heading */}
+        {/* Watermark (text or image) */}
 
+        {/* ✅ Watermark Image (Full Overlay Area) */}
+        <img
+          src="/images/Vector.webp"
+          alt="Watermark"
+          className="
+            absolute 
+            top-14 left-[115px]
+            w-[120px] h-[200px]   /* same size as overlay */
+         /* adjust transparency */
+            object-contain         /* cover full area */
+            pointer-events-none select-none  z-40 opacity-20"
+        />
+
+        {/* Bottom Heading */}
         <div className="absolute z-30 text-left top-[300px] left-[23px] w-[290px]">
           <h2
-            className="text-[24px] sm:text-base lg:text-xl font-semibold text-black mb-1 truncate w-full "
+            className="text-[24px] sm:text-base lg:text-xl font-semibold text-black mb-1 truncate w-full"
             style={{ fontFamily: "philosopher" }}
           >
             {title}
