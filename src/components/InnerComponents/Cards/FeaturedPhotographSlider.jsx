@@ -100,6 +100,8 @@ const FeaturedPhotographSlider = () => {
                 overlayImg={card.overlay} // ✅ current card ka overlay
                 title={card.title || "Default Title"} // ✅ dynamic title agar ho
                 description={card.description || "Default description"} // ✅ dynamic desc agar ho
+                isFeatured ={true}
+                isFrame={true}
               />
             </SwiperSlide>
           ))}

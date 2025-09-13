@@ -11,7 +11,7 @@ const Homepage = () => {
         className="
           w-full 
        h-[410px]
-        lg:h-[500px]
+        lg:h-[550px]
           object-cover
           block
           align-top
@@ -35,7 +35,7 @@ const Homepage = () => {
           block 
           align-top 
           cursor-pointer
-        -mt-20 md:-mt-40
+        -mt-20 md:-mt-36
         
         "
       />

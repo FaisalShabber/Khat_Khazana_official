@@ -5,19 +5,20 @@ import {
   FaInstagram,
   FaLinkedinIn,
 } from "react-icons/fa";
-import EmailOrPhone from "./InnerComponents/EmailOrPhone";
+import EmailOrPhone from "./components/InnerComponents/EmailOrPhone";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const QUICK_LINKS = [
     { label: "Home", href: "/" },
     { label: "About Us", href: "/about" },
     { label: "Contact Us", href: "/contact" },
-    { label: "Submission", href: "/submission" },
   ];
 
   const SUBMISSION_LINKS = [
     { label: "Submit a Letter", href: "/submission" },
-    { label: "View Submission", href: "/submission" },
+    { label: "Submit a Paragraph", href: "/submission" },
+    { label: "Featured letters & Photographs", href: "/featured" },
   ];
 
   const SUPPORT_INFO = [
@@ -55,31 +56,31 @@ export default function Footer() {
       }}
     >
       {/* 🔹 Top: Logo + Brand */}
-      <div className="w-fit mx-auto">
-        <div className="flex items-center justify-center gap-5">
+      <div className="w-fit mx-auto ">
+        <Link to="/" className="flex items-center justify-center gap-5">
           <img
-            src="/images/main-logo.webp"
+            src="/images/logo.svg"
             alt="Khat Khazana"
-            className="h-[100px] w-fit object-cover"
+            className="h-[130px] w-fit object-fill cursor-pointer"
           />
-        </div>
+        </Link>
       </div>
 
       {/* 🔹 Middle: Links & Info */}
-      <div className="w-full xl:px-[80px] mx-auto mt-[30px]">
+      <div className="w-full xl:px-[80px] mx-auto mt-[30px] max-w-[1920px]">
         <div
           className="
             grid grid-cols-2 lg:grid-cols-4 
-            text-center md:text-left 
+            text-center md:text-left
             gap-10 py-[30px]
           "
         >
           {/* Quick Links */}
           <div className="">
-            <h3 className="font-['Philosopher'] font-bold text-lg md:text-xl mb-7">
+            <h3 className="font-['Philosopher'] font-bold text-lg md:text-2xl mb-5">
               Quick Links
             </h3>
-            <ul className="space-y-1 font-['Ephesis'] text-lg md:text-[24px] font-normal">
+            <ul className="space-y-1 font-['Philosopher'] text-lg md:text-lg font-medium">
               {QUICK_LINKS.map((link) => (
                 <li key={link.label}>
                   <a href={link.href} className="hover:underline">
@@ -92,10 +93,10 @@ export default function Footer() {
 
           {/* Submission */}
           <div>
-            <h3 className="font-['Philosopher'] font-bold text-lg md:text-xl mb-7">
+            <h3 className="font-['Philosopher'] font-bold text-lg md:text-2xl mb-5">
               Submission
             </h3>
-            <ul className="space-y-1 font-['Ephesis'] text-lg md:text-[24px] font-normal">
+            <ul className="space-y-1 font-['Philosopher'] text-lg md:text-lg font-medium">
               {SUBMISSION_LINKS.map((link) => (
                 <li key={link.label}>
                   <a href={link.href} className="hover:underline">
@@ -107,11 +108,11 @@ export default function Footer() {
           </div>
 
           {/* Support */}
-          <div>
-            <h3 className="font-['Philosopher'] font-bold text-lg md:text-xl mb-7">
-              Support
+          <div className=" xl:w-[110%]">
+            <h3 className="font-['Philosopher'] font-bold text-lg md:text-2xl mb-5">
+              Contact Us
             </h3>
-            <ul className="space-y-1 font-['Ephesis'] text-lg md:text-[24px] font-normal">
+            <ul className="space-y-1 font-['Philosopher'] text-lg md:text-lg font-medium">
               {SUPPORT_INFO.map((info, i) => (
                 <li key={i}>
                   {info.href ? (
@@ -127,11 +128,11 @@ export default function Footer() {
           </div>
 
           {/* Social Links */}
-          <div>
-            <h3 className="font-['Philosopher'] font-bold text-lg md:text-xl mb-3">
+          <div className="ml-10">
+            <h3 className="font-['Philosopher'] font-bold text-lg md:text-2xl mb-7">
               Social Links
             </h3>
-            <div className="flex justify-center md:justify-start gap-4 text-xl md:text-2xl font-['Ephesis']">
+            <div className="flex justify-center md:justify-start gap-4 text-xl md:text-2xl">
               {SOCIAL_LINKS.map((social) => (
                 <a
                   key={social.label}
@@ -149,8 +150,8 @@ export default function Footer() {
 
       {/* 🔹 Bottom: Copyright */}
       <div className="absolute bottom-5 text-center">
-        <p className="font-['Ephesis'] text-lg md:text-[20px] font-normal">
-          © {new Date().getFullYear()} Khat Khazana. All rights reserved.
+        <p className="text-sm ">
+          © {new Date().getFullYear()} long last Letter. All rights reserved.
         </p>
       </div>
     </footer>

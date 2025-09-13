@@ -1,9 +1,9 @@
 import React from "react";
-import ContactDetail from "./InnerComponents/ContactDetail";
-import EmailOrPhone from "./InnerComponents/EmailOrPhone";
+import ContactDetail from "./components/InnerComponents/ContactDetail";
+import EmailOrPhone from "./components/InnerComponents/EmailOrPhone";
 import { FaFacebook, FaInstagramSquare, FaTwitter } from "react-icons/fa";
 import { RiInstagramFill } from "react-icons/ri";
-import HeadingDesc from "./InnerComponents/HeadingDesc";
+import HeadingDesc from "./components/InnerComponents/HeadingDesc";
 
 export default function ContactUs() {
   return (

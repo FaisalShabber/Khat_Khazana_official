@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from "react";
 
 const RadioGroup = ({
@@ -14,8 +15,8 @@ const RadioGroup = ({
   return (
     <div className={`flex flex-col ${wrapperClassName}`}>
       {label && (
-        <label className="font-bold text-sm mb-2 ">
-          {label} {required && <span className="text-[#6E4A27]">*</span>}
+        <label className="font-bold text-sm mb-2 capitalize">
+          {label} {required && <span className="text-red-600">*</span>}
         </label>
       )}
 
@@ -23,7 +24,7 @@ const RadioGroup = ({
         {options.map((option) => (
           <label
             key={option.value}
-            className="flex items-center cursor-pointer space-x-2"
+            className="flex items-center cursor-pointer space-x-2 "
           >
             <input
               type="radio"

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
@@ -11,12 +12,12 @@ export default function Navbar() {
 
   // Nav links
   const NAV_LINKS = [
-    { to: "/about", label: "About Us" },
+    { to: "/about", label: "About" },
     { to: "/letters", label: "Letters" },
     { to: "/photographs", label: "Photographs" },
     { to: "/featured", label: "Featured letters & Photographs" },
     { to: "/submission", label: "Submission" },
-    { to: "/shop", label: "Shop" },
+    // { to: "/shop", label: "Shop" },
   ];
 
   // Mobile menu
@@ -39,9 +40,9 @@ export default function Navbar() {
           aria-label="Home"
         >
           <img
-            src="/images/main-logo.webp"
+            src="/images/logo.svg"
             alt="Logo"
-            className="h-[60px] w-fit object-contain"
+            className="h-[60px] w-fit object-fill"
           />
         </Link>
 
@@ -107,9 +108,9 @@ export default function Navbar() {
         <div className="flex justify-center items-center mt-6 mb-4">
           <Link to="/" onClick={() => setMenuOpen(false)}>
             <img
-              src="/images/main-logo.webp"
+              src="/images/logo.svg"
               alt="Logo"
-              className="h-[60px] object-contain"
+              className="h-[60px] w-fit cursor-pointer"
             />
           </Link>
         </div>

@@ -1,10 +1,10 @@
 import React from "react";
 import { IoCalendarOutline } from "react-icons/io5";
 import { useParams } from "react-router-dom";
-import ThumbnailCards from "./InnerComponents/ThumbnailCards";
-import RelatedCards from "./InnerComponents/Cards/Cards";
-import RelatedPhotogaph from "./InnerComponents/Cards/PhotogaphCards";
-import RelatedPhotographs from "./InnerComponents/Cards/RelatedPhotographs";
+import ThumbnailCards from "./components/InnerComponents/ThumbnailCards";
+import RelatedCards from "./components/InnerComponents/Cards/Cards";
+import RelatedPhotogaph from "./components/InnerComponents/Cards/PhotogaphCards";
+import RelatedPhotographs from "./components/InnerComponents/Cards/RelatedPhotographs";
 
 const cards = [
   {

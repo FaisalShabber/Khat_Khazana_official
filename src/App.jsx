@@ -1,29 +1,24 @@
 // @ts-nocheck
-import React, { useEffect } from "react";
+import React from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import ContactUs from "./components/ContactUs";
-import Aboutus from "./components/Aboutus";
-import Latters from "./components/Letters";
-import Homepage from "./components/HomePage";
-import Englishletter from "./components/Englishletter";
-import Urduletter from "./components/Urduletter";
-import Punjabiletter from "./components/Punjabiletter";
-import LattersDetailpage from "./components/LattersDetailpage";
-import PhotoGraph from "./components/PhotoGraph";
-import SubmissionForm from "./components/SubmissionForm";
-import Featurelatter from "./components/Featurelatter";
-import PhotoGraphDetail from "./components/PhotoGraphDetail";
-import ShopPage from "./components/ShopPage";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+import ContactUs from "./ContactUs";
+import Aboutus from "./Aboutus";
+import Latters from "./Letters";
+import Homepage from "./HomePage";
+import Englishletter from "./Englishletter";
+import Urduletter from "./Urduletter";
+import Punjabiletter from "./Punjabiletter";
+import LattersDetailpage from "./LattersDetailpage";
+import PhotoGraph from "./PhotoGraph";
+import SubmissionForm from "./SubmissionForm";
+import Featurelatter from "./Featurelatter";
+import PhotoGraphDetail from "./PhotoGraphDetail";
+import ShopPage from "./ShopPage";
 
-const Layout = () => {
+const Layout = () => { 
   const location = useLocation();
-
-  // ✅ Fixed meta title
-  useEffect(() => {
-    document.title = "Khat-Khazana Official";
-  }, []);
 
   return (
     <>

@@ -1,11 +1,2 @@
 @import "tailwindcss";
 /* index.css */
-body {
-  margin: 0;
-  font-family: "Philosopher", sans-serif;
-  background-image: url("/images/updated_bg.webp");
-  background-repeat: no-repeat;
-  background-size: 100% 114%; /* covers full screen */
-  background-position: center;
-  min-height: 100vh;
-}

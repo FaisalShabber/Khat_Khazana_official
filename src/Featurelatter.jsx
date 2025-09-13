@@ -1,10 +1,10 @@
 // @ts-nocheck
 import React from "react";
-import TestimonialCard from "./InnerComponents/TestimonialCard";
-import FeaturedCards from "./InnerComponents/Cards/FeaturedCards";
-import FeaturedPhotographCard from "./InnerComponents/Cards/FeaturedPhotographCard";
-import TestimonialPhotographCard from "./InnerComponents/TestimonialPhotographCard";
-import Subcription from "./InnerComponents/Subcription";
+import TestimonialCard from "./components/InnerComponents/TestimonialCard";
+import FeaturedCards from "./components/InnerComponents/Cards/FeaturedCards";
+import FeaturedPhotographCard from "./components/InnerComponents/Cards/FeaturedPhotographCard";
+import TestimonialPhotographCard from "./components/InnerComponents/TestimonialPhotographCard";
+import Subcription from "./components/InnerComponents/Subcription";
 
 const Featurelatter = () => {
   return (

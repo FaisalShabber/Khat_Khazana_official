@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
-import HeadingDesc from "./InnerComponents/HeadingDesc";
-import PhotographCard from "./InnerComponents/Cards/PhotographCard";
-import Subcription from "./InnerComponents/Subcription";
+import HeadingDesc from "./components/InnerComponents/HeadingDesc";
+import PhotographCard from "./components/InnerComponents/Cards/PhotographCard";
+import Subcription from "./components/InnerComponents/Subcription";
 
 const cards = [
   { img: "/images/Card.webp", overlay: "/images/image 5-min.webp" },
@@ -65,7 +65,7 @@ const PhotoGraph = () => {
       <div className="mt-16 w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
         {visibleCards?.map((card, i) => (
           <PhotographCard
-            key={card.id}
+            key={card?.id}
             to={`/PhotoGraphs/${i}`}
             overlayImg={card?.overlay}
             title="Explore More Letters"

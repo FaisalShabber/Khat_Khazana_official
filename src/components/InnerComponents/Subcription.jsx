@@ -24,7 +24,7 @@ const Subcription = () => {
         />
 
         <ParchmentButton onClick={() => alert("Subscribed!")}>
-          Buy Now
+        Submit
         </ParchmentButton>
       </div>
     </div>

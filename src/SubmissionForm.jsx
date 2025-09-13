@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React, { useState } from "react";
-import ParchmentButton from "./InnerComponents/ParchmentButton";
-import Form from "./InnerComponents/SubmissionForm/Form";
+import ParchmentButton from "./components/InnerComponents/ParchmentButton";
+import Form from "./components/InnerComponents/SubmissionForm/Form";
 
 // ✅ Modal Component
 const Modal = ({ isOpen, onClose, title, children }) => {
@@ -184,14 +184,7 @@ const SubmissionForm = () => {
               future submissions.
             </p>
 
-            <p>
-              <strong>Checkbox Version for Online Forms:</strong> [ ] I confirm
-              that I have read and agreed to the Terms of Submission, and that I
-              am the sole owner (or authorized rights holder) of the content I
-              am submitting. I grant longlostletters.com the right to use,
-              publish, archive, or reject my submission in accordance with those
-              Terms.
-            </p>
+          
           </div>
         )}
 

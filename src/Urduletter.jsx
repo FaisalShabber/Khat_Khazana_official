@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
-import HeadingDesc from "./InnerComponents/HeadingDesc";
-import LetterCard from "./InnerComponents/Cards/LetterCard";
-import Subcription from "./InnerComponents/Subcription";
+import HeadingDesc from "./components/InnerComponents/HeadingDesc";
+import LetterCard from "./components/InnerComponents/Cards/LetterCard";
+import Subcription from "./components/InnerComponents/Subcription";
 
 // Dummy Data (isko API ya props se bhi le sakte ho)
 const cards = [
@@ -76,7 +76,7 @@ const cards = [
   },
 ];
 
-function Punjabiletter() {
+function Urduletter() {
   const [visibleCount, setVisibleCount] = useState(12);
   const [loading, setLoading] = useState(false);
 
@@ -95,7 +95,7 @@ function Punjabiletter() {
       {/* Heading */}
       <HeadingDesc
         headingClassName="md:text-[40px] text-center"
-        heading="Punjabi Letters"
+        heading="Urdu Letters"
         containerClassName="mt-6"
         description="Get the latest items immediately with promo prices"
       />
@@ -124,7 +124,7 @@ function Punjabiletter() {
         {visibleCards.map((card, i) => (
           <LetterCard
             key={i}
-            to={`/letters/punjabi/${i}`}
+            to={`/letters/urdu/${i}`}
             overlay={card.overlay} // ✅ current card ka overlay
             title={card.title || "Default Title"} // ✅ dynamic title agar ho
             description={card.description || "Default description"} // ✅ dynamic desc agar ho
@@ -159,4 +159,4 @@ function Punjabiletter() {
   );
 }
 
-export default Punjabiletter;
+export default Urduletter;
