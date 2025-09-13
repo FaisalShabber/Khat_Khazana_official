@@ -1,4 +1,5 @@
 // @ts-nocheck
+
 import React from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
@@ -10,12 +11,12 @@ import Homepage from "./HomePage";
 import Englishletter from "./Englishletter";
 import Urduletter from "./Urduletter";
 import Punjabiletter from "./Punjabiletter";
-import LattersDetailpage from "./LattersDetailpage";
 import PhotoGraph from "./PhotoGraph";
 import SubmissionForm from "./SubmissionForm";
 import Featurelatter from "./Featurelatter";
 import PhotoGraphDetail from "./PhotoGraphDetail";
 import ShopPage from "./ShopPage";
+import LetterDetailPage from "./LetterDetailPage";
 
 const Layout = () => { 
   const location = useLocation();
@@ -34,13 +35,13 @@ const Layout = () => {
 
         {/* Sub routes with details */}
         <Route path="/letters/english" element={<Englishletter />} />
-        <Route path="/letters/english/:id" element={<LattersDetailpage />} />
+        <Route path="/letters/english/:id" element={<LetterDetailPage />} />
 
         <Route path="/letters/urdu" element={<Urduletter />} />
-        <Route path="/letters/urdu/:id" element={<LattersDetailpage />} />
+        <Route path="/letters/urdu/:id" element={<LetterDetailPage />} />
 
         <Route path="/letters/punjabi" element={<Punjabiletter />} />
-        <Route path="/letters/punjabi/:id" element={<LattersDetailpage />} />
+        <Route path="/letters/punjabi/:id" element={<LetterDetailPage />} />
 
         <Route
           path="/photographs"
