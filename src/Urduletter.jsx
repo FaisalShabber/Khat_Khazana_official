@@ -8,62 +8,70 @@ import Subcription from "./components/InnerComponents/Subcription";
 const cards = [
   {
     overlay: "/images/About-1.webp",
-    title: "Historic Letter 1",
-    description: "A glimpse into the past with rare documents and timeless stories.",
+    title: "Lorem Ipsum 1",
+    description:
+      "A glimpse into the past with rare documents and timeless stories.",
   },
   {
     overlay: "/images/About-2.webp",
-    title: "Historic Letter 2",
-    description: "Rare and valuable find showcasing memories of forgotten eras.",
+    title: "Lorem Ipsum 2",
+    description:
+      "Rare and valuable find showcasing memories of forgotten eras.",
   },
   {
     overlay: "/images/About-3.webp",
-    title: "Historic Letter 3",
-    description: "Preserving history and stories through beautifully kept letters.",
+    title: "Lorem Ipsum 3",
+    description:
+      "Preserving history and stories through beautifully kept letters.",
   },
   {
     overlay: "/images/About-1.webp",
-    title: "Historic Letter 4",
+    title: "Lorem Ipsum 4",
     description: "Discover unseen letters that reveal unique life experiences.",
   },
   {
     overlay: "/images/About-2.webp",
-    title: "Historic Letter 5",
-    description: "Historic archives providing insight into the past’s narratives.",
+    title: "Lorem Ipsum 5",
+    description:
+      "Historic archives providing insight into the past’s narratives.",
   },
   {
     overlay: "/images/About-3.webp",
-    title: "Historic Letter 6",
-    description: "Beautifully preserved memories and letters of historical value.",
+    title: "Lorem Ipsum 6",
+    description:
+      "Beautifully preserved memories and letters of historical value.",
   },
   {
     overlay: "/images/About-1.webp",
-    title: "Historic Letter 7",
-    description: "Timeless correspondence capturing the heart of old generations.",
+    title: "Lorem Ipsum 7",
+    description:
+      "Timeless correspondence capturing the heart of old generations.",
   },
   {
     overlay: "/images/About-2.webp",
-    title: "Historic Letter 8",
+    title: "Lorem Ipsum 8",
     description: "Rare letters connecting us to the voices of a bygone age.",
   },
   {
     overlay: "/images/About-3.webp",
-    title: "Historic Letter 9",
+    title: "Lorem Ipsum 9",
     description: "Stories written in ink revealing untold journeys of life.",
   },
   {
     overlay: "/images/About-1.webp",
-    title: "Historic Letter 10",
-    description: "Preserved messages reflecting emotions and memories of the past.",
+    title: "Lorem Ipsum 10",
+    description:
+      "Preserved messages reflecting emotions and memories of the past.",
   },
   {
     overlay: "/images/About-2.webp",
-    title: "Historic Letter 11",
-    description: "Letters that document moments of love, struggle, and history.",
+    title: "Lorem Ipsum 11",
+    description:
+      "Letters that document moments of love, struggle, and history.",
   },
   {
     overlay: "/images/About-3.webp",
-    title: "Historic Letter 12",
+    title: "Lorem Ipsum 12",
     description: "Unlock the past through these rare handwritten treasures.",
   },
 ];

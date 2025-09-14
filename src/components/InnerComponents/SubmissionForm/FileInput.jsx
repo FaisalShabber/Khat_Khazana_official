@@ -39,7 +39,7 @@ const FileInput = ({
         {label && (
           <label
             htmlFor={name}
-            className="font-bold text-sm mb-2 block text-[#4A2C2A]"
+            className="font-bold text-sm mb-2 block"
           >
             {label} {required && <span className="text-red-600">*</span>}
           </label>

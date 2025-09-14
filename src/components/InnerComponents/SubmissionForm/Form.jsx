@@ -152,7 +152,7 @@ const Form = () => {
                       options={decadeOptions}
                     />
                     <FileInput
-                      label="Upload Letter Image (JPEG)"
+                      label="Upload"
                       name="letterImage"
                       subtext="Hi Res Jpegs only. 10” width scanned in 300 DPI (Max 5MB)"
                       required
@@ -211,6 +211,8 @@ const Form = () => {
                             wrapperClassName="w-full mt-4"
                             className="h-24"
                             name="letterNarrative"
+                            label="Text"
+                            required
                           />
                         )}
 
@@ -221,6 +223,8 @@ const Form = () => {
                             subtext="Only MP3 Format (Max 5MB)"
                             previewType="audio"
                             className="mt-5"
+                            label="Audio"
+                            required
                           />
                         )}
                       </div>
@@ -253,7 +257,7 @@ const Form = () => {
                       name="photoPlace"
                     />
                     <FileInput
-                      label="Upload Photo (JPEG)"
+                      label="Upload"
                       name="photoImage"
                       subtext="Hi Res Jpegs only. 10” width scanned in 300 DPI (Max 5MB)"
                       required
@@ -311,6 +315,8 @@ const Form = () => {
                             wrapperClassName="w-full mt-4"
                             className="h-24"
                             name="photoNarrative"
+                            label="Text"
+                            required
                           />
                         )}
 
@@ -321,6 +327,8 @@ const Form = () => {
                             subtext="Only MP3 Format (Max 5MB)"
                             previewType="audio"
                             className="mt-5"
+                            label="Audio"
+                            required
                           />
                         )}
                       </div>

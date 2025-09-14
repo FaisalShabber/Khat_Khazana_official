@@ -28,7 +28,7 @@ const LetterCard = ({
             src={overlay}
             alt="Overlay"
             loading="eager"
-            className="object-contain group-hover:drop-shadow-xl transition-all duration-300 w-fit h-[250px]"
+            className="object-contain group-hover:drop-shadow-xl transition-all duration-300 border w-fit h-[250px]"
           />
 
           {/* ✅ Watermark Image (Full Overlay Area) */}

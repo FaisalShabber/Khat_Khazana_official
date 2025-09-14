@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState } from "react";
 
 const Thumbnails = ({ RelatedImage }) => {
@@ -35,14 +36,14 @@ const Thumbnails = ({ RelatedImage }) => {
           onClick={handleClose}
         >
           <div
-            className="relative rounded-lg overflow-hidden max-w-[70vw] max-h-[70vh]"
+            className="relative rounded-lg overflow-hidden max-w-[70vw] md:h-[80%]"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Background Image */}
             <img
               src={RelatedImage}
               alt="Thumbnail Full"
-              className="w-full h-full max-h-[95vh]"
+              className="w-full h-full object-fill"
             />
 
             {/* Caption Overlay */}

@@ -22,10 +22,10 @@ const LetterDetailPage = () => {
         </div>
         {/* Title */}.
         <p
-          className="w-full max-w-[700px] text-left text-3xl sm:text-[40px] md:text-[50px] font-bold capitalize "
+          className="w-full text-left text-2xl md:text-[40px] font-bold capitalize "
           style={{ fontFamily: "philosopher" }}
         >
-          Want More Historic Letters?
+          Want More Lorem Ipsum Letters?
         </p>
       </div>
 
