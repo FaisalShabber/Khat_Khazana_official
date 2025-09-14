@@ -6,12 +6,12 @@ const demoData = [
   {
     id: 1,
     img: "/images/About-1.webp",
-    title: "Historic Letter #1",
+    title: "Lorem Ipsum #1",
   },
   {
     id: 2,
     img: "/images/About-2.webp",
-    title: "Historic Letter #2",
+    title: "Lorem Ipsum #2",
   },
 ];
 

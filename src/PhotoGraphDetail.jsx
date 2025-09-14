@@ -1,49 +1,7 @@
 import React from "react";
 import { IoCalendarOutline } from "react-icons/io5";
-import { useParams } from "react-router-dom";
 import ThumbnailCards from "./components/InnerComponents/ThumbnailCards";
-import RelatedCards from "./components/InnerComponents/Cards/Cards";
-import RelatedPhotogaph from "./components/InnerComponents/Cards/PhotogaphCards";
 import RelatedPhotographs from "./components/InnerComponents/Cards/RelatedPhotographs";
-
-const cards = [
-  {
-    id: 1,
-    overlay: "/images/image 5-min.webp",
-    title: "Old Photo 1",
-    desc: "This is detail of photo 1",
-  },
-  {
-    id: 2,
-    overlay: "/images/image 5 (1)-min.webp",
-    title: "Old Photo 2",
-    desc: "This is detail of photo 2",
-  },
-  {
-    id: 3,
-    overlay: "/images/image 5 (2).webp",
-    title: "Old Photo 3",
-    desc: "This is detail of photo 3",
-  },
-  {
-    id: 4,
-    overlay: "/images/image 5-min.webp",
-    title: "Old Photo 4",
-    desc: "This is detail of photo 4",
-  },
-  {
-    id: 5,
-    overlay: "/images/image 5 (1)-min.webp",
-    title: "Old Photo 5",
-    desc: "This is detail of photo 5",
-  },
-  {
-    id: 6,
-    overlay: "/images/image 5 (2).webp",
-    title: "Old Photo 6",
-    desc: "This is detail of photo 6",
-  },
-];
 
 const PhotoGraphDetail = () => {
   // const { id } = useParams();
@@ -80,10 +38,10 @@ const PhotoGraphDetail = () => {
           </div>
           {/* Title */}.
           <p
-            className="w-full max-w-[700px] text-left text-3xl sm:text-[40px] md:text-[50px] font-bold capitalize "
+            className="w-full text-left text-2xl md:text-[40px] font-bold capitalize "
             style={{ fontFamily: "philosopher" }}
           >
-            Want More Historic Letters?
+            Want More Lorem Ipsum Letters?
           </p>
         </div>
 
@@ -95,13 +53,15 @@ const PhotoGraphDetail = () => {
           style={{ backgroundImage: "url('/images/Card.webp')" }}
         >
           <div className="w-full text-black">
-            {/* Historic Letter Image */}
-            <div className="mb-6 ">
+            <div className="flex flex-col lg:flex-row justify-start gap-5 mb-6 w-full">
               <img
-                src="/images/latterdetailpage img.webp"
-                alt="Historic Letter"
-                className="object-cover rounded-[20px] mx-auto w-full  h-[300px] lg:h-[500px] max-h-[500px]"
+                src="/images/About-1.webp"
+                alt="Lorem Ipsum"
+                className=" rounded-[20px] mx-auto w-[70%] h-[300px] lg:h-[500px] max-h-[500px] object-contain "
               />
+              <div className="self-center w-full h-px border-t border-black lg:w-px lg:h-[400px] lg:border-t-0 lg:border-l"></div>
+
+              <ThumbnailCards />
             </div>
 
             {/* Paragraph + Right Cards */}
@@ -128,14 +88,6 @@ const PhotoGraphDetail = () => {
                 processing time by 60% & improved collaboration
                 efficiency,Reduced documents processing time by 60% & improved.
               </div>
-
-              {/* Vertical Line → always visible */}
-
-              <div className="self-center w-full h-px border-t border-black lg:w-px lg:h-[400px] lg:border-t-0 lg:border-l"></div>
-
-              {/* ✅ Thumbnails */}
-
-              <ThumbnailCards />
             </div>
           </div>
         </div>

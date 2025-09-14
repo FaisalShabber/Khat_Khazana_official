@@ -10,14 +10,14 @@ const cards = [
   {
     img: "/images/Card.webp",
     overlay: "/images/image4.webp",
-    title: "Want more historic letters?",
+    title: "Want more Lorem Ipsums?",
     description: "Join our archive mailing list and never miss an update.",
   },
   {
     img: "/images/Card.webp",
     overlay: "/images/image3.webp",
     title: "Exclusive Archive",
-    description: "Discover unique historic letters curated for you.",
+    description: "Discover unique Lorem Ipsums curated for you.",
   },
   {
     img: "/images/Card.webp",

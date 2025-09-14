@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -9,30 +10,75 @@ import PhotographCard from "./PhotographCard";
 
 const cards = [
   {
-    img: "/images/Card.webp",
-    overlay: "/images/image1.webp",
-    title: "Want more historic letters?",
-    description: "Join our archive mailing list and never miss an update.",
+    overlay: "/images/About-1.webp",
+    title: "Lorem Ipsum 1",
+    description:
+      "A glimpse into the past with rare documents and timeless stories.",
   },
   {
-    img: "/images/Card.webp",
-    overlay: "/images/image2.webp",
-    title: "Exclusive Archive",
-    description: "Discover unique historic letters curated for you.",
+    overlay: "/images/About-2.webp",
+    title: "Lorem Ipsum 2",
+    description:
+      "Rare and valuable find showcasing memories of forgotten eras.",
   },
   {
-    img: "/images/Card.webp",
-    overlay: "/images/image3.webp",
-    title: "Stay Updated",
-    description: "Be the first to receive our new letter collections.",
+    overlay: "/images/About-3.webp",
+    title: "Lorem Ipsum 3",
+    description:
+      "Preserving history and stories through beautifully kept letters.",
   },
   {
-    img: "/images/Card.webp",
-    overlay: "/images/image4.webp",
-    title: "More Insights",
-    description: "Explore the untold stories in our collection.",
+    overlay: "/images/About-1.webp",
+    title: "Lorem Ipsum 4",
+    description: "Discover unseen letters that reveal unique life experiences.",
+  },
+  {
+    overlay: "/images/About-2.webp",
+    title: "Lorem Ipsum 5",
+    description:
+      "Historic archives providing insight into the past’s narratives.",
+  },
+  {
+    overlay: "/images/About-3.webp",
+    title: "Lorem Ipsum 6",
+    description:
+      "Beautifully preserved memories and letters of historical value.",
+  },
+  {
+    overlay: "/images/About-1.webp",
+    title: "Lorem Ipsum 7",
+    description:
+      "Timeless correspondence capturing the heart of old generations.",
+  },
+  {
+    overlay: "/images/About-2.webp",
+    title: "Lorem Ipsum 8",
+    description: "Rare letters connecting us to the voices of a bygone age.",
+  },
+  {
+    overlay: "/images/About-3.webp",
+    title: "Lorem Ipsum 9",
+    description: "Stories written in ink revealing untold journeys of life.",
+  },
+  {
+    overlay: "/images/About-1.webp",
+    title: "Lorem Ipsum 10",
+    description:
+      "Preserved messages reflecting emotions and memories of the past.",
+  },
+  {
+    overlay: "/images/About-2.webp",
+    title: "Lorem Ipsum 11",
+    description:
+      "Letters that document moments of love, struggle, and history.",
+  },
+  {
+    overlay: "/images/About-3.webp",
+    title: "Lorem Ipsum 12",
+    description: "Unlock the past through these rare handwritten treasures.",
   },
 ];
+
 
 const PhotogaphCards = () => {
   return (
@@ -52,7 +98,7 @@ const PhotogaphCards = () => {
           {cards.map((card, i) => (
             <SwiperSlide key={i} className="flex justify-start">
               <PhotographCard
-                key={card.id}
+                key={card?.id}
                 to={`/PhotoGraphs/${i}`}
                 overlayImg={card?.overlay}
                 title={card.title}

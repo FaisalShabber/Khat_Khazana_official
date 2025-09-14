@@ -40,7 +40,7 @@ const LetterDetailPage = () => {
           <div className="flex flex-col lg:flex-row justify-start gap-5 mb-6 w-full">
             <img
               src="/images/About-1.webp"
-              alt="Historic Letter"
+              alt="Lorem Ipsum"
               className=" rounded-[20px] mx-auto w-[70%] h-[300px] lg:h-[500px] max-h-[500px] object-contain "
             />
             <div className="self-center w-full h-px border-t border-black lg:w-px lg:h-[400px] lg:border-t-0 lg:border-l"></div>

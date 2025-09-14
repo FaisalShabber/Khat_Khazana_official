@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const FeaturedCard = ({
   to = "#",
   overlay,
-  title = "Want more historic letters?",
+  title = "Want more Lorem Ipsums?",
   description = "Join our archive mailing list and never miss an update.",
   className = "",
   isFeatured = true,
@@ -26,7 +26,7 @@ const FeaturedCard = ({
         {/* Featured Badge */}
         {isFeatured && (
           <span
-            className="absolute top-12 right-7 bg-white text-black text-sm font-semibold px-3 py-1 rounded-full shadow-md z-20"
+            className="absolute top-12 right-24 bg-white text-black text-sm font-semibold px-3 py-1 rounded-full shadow-md z-20"
             style={{ fontFamily: "Philosopher" }}
           >
             Featured
@@ -49,8 +49,8 @@ const FeaturedCard = ({
             alt="Watermark"
             className="
             absolute 
-            top-14 left-12
-            w-[250px] h-[200px]   /* same size as overlay */
+          top-20 left-[100px]
+            w-[150px] h-[150px]   /* same size as overlay */
             opacity-20        /* adjust transparency */
             object-cover          /* cover full area */
             pointer-events-none select-none "

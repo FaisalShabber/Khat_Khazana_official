@@ -20,7 +20,7 @@ const Thumbnails = ({ RelatedImage }) => {
         <img
           src={RelatedImage}
           alt="Thumbnail"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-fill"
         />
 
         {/* Caption Overlay */}

@@ -5,8 +5,8 @@ import PhotographFeaturedCard from "./Cards/PhotographFeaturedCard";
 // Dummy Data (isko API ya props se bhi le sakte ho)
 const cards = [
   {
-    overlay: "/images/image1.webp",
-    title: "Historic Letter 1",
+    overlay: "/images/About-1.webp",
+    title: "Lorem Ipsum 1",
     description:
       "A glimpse into the past with rare documents and timeless stories.",
   },

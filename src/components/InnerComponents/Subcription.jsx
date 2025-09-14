@@ -8,7 +8,7 @@ const Subcription = () => {
       <HeadingDesc
         headingClassName="text-[40px]"
         heading="Treasures from History?"
-        description="A handpicked historic letter delivered to your inbox every month."
+        description="A handpicked Lorem Ipsum delivered to your inbox every month."
       />
       <div className="flex flex-col md:flex-row justify-center items-center gap-5">
         <input

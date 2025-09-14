@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const LetterCard = ({
   to = "#",
   overlay,
-  title = "Want more historic letters?",
+  title = "Want more Lorem Ipsums?",
   description = "Join our archive mailing list and never miss an update.",
   className = "",
 }) => {

@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 const PhotographFeaturedCard = ({
   to = "#",
   overlayImg, // overlay image prop
-  title = "Want more historic letters?", // heading prop
+  title = "Want more Lorem Ipsums?", // heading prop
   description = "Join our archive mailing list and never miss an update.", // description prop
   isFeatured = true, // naya prop add kiya
   isFrame = false, // naya prop add kiya
@@ -44,7 +44,7 @@ const PhotographFeaturedCard = ({
           <img
             src={overlayImg}
             alt="Overlay"
-            className="w-full h-full object-cover rounded-[5px]"
+            className="w-full h-full  rounded-[5px]"
           />
 
           {/* ✅ Watermark Image */}

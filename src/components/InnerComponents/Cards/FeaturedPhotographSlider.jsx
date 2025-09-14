@@ -8,71 +8,71 @@ import PhotographFeaturedCard from "./PhotographFeaturedCard";
 
 const cards = [
   {
-    overlay: "/images/image1.webp",
-    title: "Historic Letter 1",
+    overlay: "/images/About-1.webp",
+    title: "Lorem Ipsum 1",
     description:
       "A glimpse into the past with rare documents and timeless stories.",
   },
   {
-    overlay: "/images/image2.webp",
-    title: "Historic Letter 2",
+    overlay: "/images/About-2.webp",
+    title: "Lorem Ipsum 2",
     description:
       "Rare and valuable find showcasing memories of forgotten eras.",
   },
   {
-    overlay: "/images/image3.webp",
-    title: "Historic Letter 3",
+    overlay: "/images/About-3.webp",
+    title: "Lorem Ipsum 3",
     description:
       "Preserving history and stories through beautifully kept letters.",
   },
   {
-    overlay: "/images/image4.webp",
-    title: "Historic Letter 4",
+    overlay: "/images/About-1.webp",
+    title: "Lorem Ipsum 4",
     description: "Discover unseen letters that reveal unique life experiences.",
   },
   {
-    overlay: "/images/image5.webp",
-    title: "Historic Letter 5",
+    overlay: "/images/About-2.webp",
+    title: "Lorem Ipsum 5",
     description:
       "Historic archives providing insight into the past’s narratives.",
   },
   {
-    overlay: "/images/image6.webp",
-    title: "Historic Letter 6",
+    overlay: "/images/About-3.webp",
+    title: "Lorem Ipsum 6",
     description:
       "Beautifully preserved memories and letters of historical value.",
   },
   {
-    overlay: "/images/image1.webp",
-    title: "Historic Letter 7",
+    overlay: "/images/About-1.webp",
+    title: "Lorem Ipsum 7",
     description:
       "Timeless correspondence capturing the heart of old generations.",
   },
   {
-    overlay: "/images/image2.webp",
-    title: "Historic Letter 8",
+    overlay: "/images/About-2.webp",
+    title: "Lorem Ipsum 8",
     description: "Rare letters connecting us to the voices of a bygone age.",
   },
   {
-    overlay: "/images/image3.webp",
-    title: "Historic Letter 9",
+    overlay: "/images/About-3.webp",
+    title: "Lorem Ipsum 9",
     description: "Stories written in ink revealing untold journeys of life.",
   },
   {
-    overlay: "/images/image4.webp",
-    title: "Historic Letter 10",
+    overlay: "/images/About-1.webp",
+    title: "Lorem Ipsum 10",
     description:
       "Preserved messages reflecting emotions and memories of the past.",
   },
   {
-    overlay: "/images/image5.webp",
-    title: "Historic Letter 11",
+    overlay: "/images/About-2.webp",
+    title: "Lorem Ipsum 11",
     description:
       "Letters that document moments of love, struggle, and history.",
   },
   {
-    overlay: "/images/image6.webp",
-    title: "Historic Letter 12",
+    overlay: "/images/About-3.webp",
+    title: "Lorem Ipsum 12",
     description: "Unlock the past through these rare handwritten treasures.",
   },
 ];
@@ -100,7 +100,7 @@ const FeaturedPhotographSlider = () => {
                 overlayImg={card.overlay} // ✅ current card ka overlay
                 title={card.title || "Default Title"} // ✅ dynamic title agar ho
                 description={card.description || "Default description"} // ✅ dynamic desc agar ho
-                isFeatured ={true}
+                isFeatured={true}
                 isFrame={true}
               />
             </SwiperSlide>
