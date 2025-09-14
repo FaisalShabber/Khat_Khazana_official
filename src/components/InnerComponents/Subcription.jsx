@@ -7,8 +7,8 @@ const Subcription = () => {
     <div className="flex flex-col justify-center items-center gap-5">
       <HeadingDesc
         headingClassName="text-[40px]"
-        heading="Want more historic letters?"
-        description="Join our archive mailing list and never miss an update."
+        heading="Treasures from History?"
+        description="A handpicked historic letter delivered to your inbox every month."
       />
       <div className="flex flex-col md:flex-row justify-center items-center gap-5">
         <input
@@ -24,7 +24,7 @@ const Subcription = () => {
         />
 
         <ParchmentButton onClick={() => alert("Subscribed!")}>
-        Submit
+          Submit
         </ParchmentButton>
       </div>
     </div>

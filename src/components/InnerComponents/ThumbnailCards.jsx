@@ -5,12 +5,12 @@ import Thumbnails from "./Thumbnails";
 const demoData = [
   {
     id: 1,
-    img: "/images/thumb1.webp",
+    img: "/images/About-1.webp",
     title: "Historic Letter #1",
   },
   {
     id: 2,
-    img: "/images/thumb2.webp",
+    img: "/images/About-2.webp",
     title: "Historic Letter #2",
   },
 ];
@@ -23,14 +23,13 @@ const ThumbnailCards = () => {
         className="text-lg sm:text-xl font-bold mb-4 text-center"
         style={{ fontFamily: "philosopher" }}
       >
-        Related Letters
+        Related Photographs
       </h2>
 
       {/* Cards Loop */}
       <div className="w-full flex flex-col md:flex-row lg:flex-col justify-center gap-4 items-center lg:items-start">
         {demoData.map((item) => (
-          // @ts-ignore
-          <Thumbnails key={item.id} img={item.img} title={item.title} />
+          <Thumbnails RelatedImage={item?.img} key={item.id} />
         ))}
       </div>
     </div>

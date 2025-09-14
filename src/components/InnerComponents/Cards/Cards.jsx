@@ -35,7 +35,7 @@ const cards = [
 
 const RelatedCards = () => {
   return (
-    <div className="mt-14 w-full flex justify-start">
+    <div className="mt-14 w-full flex justify-center">
       <div className="w-full max-w-[1270px]">
         <Swiper
           modules={[Pagination, Navigation]}

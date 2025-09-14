@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Thumbnails = () => {
+const Thumbnails = ({ RelatedImage }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const caption = "Join our archive mailing list and never miss an update.";
@@ -17,16 +17,13 @@ const Thumbnails = () => {
       >
         {/* Background Image */}
         <img
-          src="/images/thumbnails.webp"
+          src={RelatedImage}
           alt="Thumbnail"
           className="w-full h-full object-cover"
         />
 
         {/* Caption Overlay */}
-        <p
-          className="absolute bottom-0 left-0 w-full text-[12px] font-semibold text-white italic px-2 py-1 text-center bg-black/80"
-          style={{ fontFamily: "'Ephesis'" }}
-        >
+        <p className="absolute bottom-0 left-0 w-full text-[12px] font-semibold text-white italic px-2 py-1 text-center bg-black/80">
           {caption}
         </p>
       </div>
@@ -34,7 +31,7 @@ const Thumbnails = () => {
       {/* Modal / Popup */}
       {isOpen && (
         <div
-          className="fixed inset-0 top-10 bg-black/95 flex items-center justify-center z-50"
+          className="fixed inset-0 top-10 backdrop-blur-sm bg-black/50 flex items-center justify-center z-50"
           onClick={handleClose}
         >
           <div
@@ -43,23 +40,20 @@ const Thumbnails = () => {
           >
             {/* Background Image */}
             <img
-              src="/images/thumbnails.webp"
+              src={RelatedImage}
               alt="Thumbnail Full"
-              className="w-full h-full max-h-[80vh] object-cover"
+              className="w-full h-full max-h-[95vh]"
             />
 
             {/* Caption Overlay */}
-            <p
-              className="absolute bottom-0 left-0 w-full text-white text-xl lg:text-3xl  px-2 py-3 lg:py-5 text-center bg-black/80"
-              style={{ fontFamily: "'Ephesis'" }}
-            >
+            <p className="absolute bottom-0 left-0 w-full text-white text-lg lg:text-xl  px-2 py-3 lg:py-5 text-center bg-black/80">
               {caption}
             </p>
 
             {/* Close Button */}
             <button
               onClick={handleClose}
-              className="absolute top-4 right-4 bg-white text-black rounded-full px-2 py-1 text-xs shadow cpursor-pointer hover:bg-gray-200"
+              className="absolute top-4 right-4 bg-white text-black rounded-full px-2 py-1 text-sm shadow cursor-pointer hover:bg-gray-200"
             >
               ✕
             </button>
