@@ -10,10 +10,10 @@ const Form = () => {
   // States
   const [uploadType, setUploadType] = useState("Both");
   const [before2000, setBefore2000] = useState("No");
-  const [letterNarrativeFormat, setLetterNarrativeFormat] = useState("text");
-  const [photoNarrativeFormat, setPhotoNarrativeFormat] = useState("text");
-  const [hasReadGuidelines, setHasReadGuidelines] = useState(true);
-  const [agreedTermsSubmission, setAgreedTermsSubmission] = useState(true);
+  const [letterNarrativeFormat, setLetterNarrativeFormat] = useState("both");
+  const [photoNarrativeFormat, setPhotoNarrativeFormat] = useState("both");
+  const [hasReadGuidelines, setHasReadGuidelines] = useState(false);
+  const [agreedTermsSubmission, setAgreedTermsSubmission] = useState(false);
   const [letterLanguage, setLetterLanguage] = useState("");
   const [letterCategory, setLetterCategory] = useState("");
   const [decade, setDecade] = useState("");
