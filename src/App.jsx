@@ -17,8 +17,11 @@ import Featurelatter from "./Featurelatter";
 import PhotoGraphDetail from "./PhotoGraphDetail";
 import ShopPage from "./ShopPage";
 import LetterDetailPage from "./LetterDetailPage";
+import AdminLogin from "./pages/admin/AdminLogin";
+import Dashboard from "./pages/admin/AdminDashboard";
+import ProtectedRoute from "./components/protected/ProtectedRoutes";
 
-const Layout = () => { 
+const Layout = () => {
   const location = useLocation();
 
   return (
@@ -58,6 +61,18 @@ const Layout = () => {
           element={<SubmissionForm title="Submission" />}
         />
         <Route path="/shop" element={<ShopPage title="Shop" />} />
+        <Route
+          path="/admin-login"
+          element={<AdminLogin title="Admin-Login" />}
+        />
+        <Route
+          path="/admin-Dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard title="Admin-Dashboard" />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
 
       {/* ✅ Footer sirf homepage pe hide hoga */}

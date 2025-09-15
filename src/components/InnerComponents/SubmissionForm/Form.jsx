@@ -1,12 +1,14 @@
+// components/Form.jsx
 // @ts-nocheck
 import React, { useState } from "react";
+import api from 'axios'
 import FormSection from "./FormSection";
 import InputField from "./InputField";
 import RadioGroup from "./RadioGroup";
 import FileInput from "./FileInput";
 import DropdownField from "./DropdownField";
 
-const Form = () => {
+export default function Form() {
   // States
   const [uploadType, setUploadType] = useState("Both");
   const [before2000, setBefore2000] = useState("No");
@@ -17,29 +19,9 @@ const Form = () => {
   const [letterLanguage, setLetterLanguage] = useState("");
   const [letterCategory, setLetterCategory] = useState("");
   const [decade, setDecade] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleUploadTypeChange = (e) => setUploadType(e.target.value);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData.entries());
-    console.log("Form Data:", data);
-    alert("Form submitted successfully!");
-    e.target.reset();
-
-    // reset states
-    setUploadType("Both");
-    setBefore2000("No");
-    setLetterNarrativeFormat("text");
-    setPhotoNarrativeFormat("text");
-    setLetterLanguage("");
-    setLetterCategory("");
-    setDecade("");
-  };
-
-  const renderLetterInfo = uploadType === "Letter" || uploadType === "Both";
-  const renderPhotoInfo = uploadType === "Photographs" || uploadType === "Both";
 
   const decadeOptions = Array.from({ length: 10 }, (_, i) => {
     const start = 1900 + i * 10;
@@ -47,9 +29,62 @@ const Form = () => {
     return { value: `${start}-${end}`, label: `${start} - ${end}` };
   });
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      setIsSubmitting(true);
+
+      const formEl = e.target;
+      const formData = new FormData(formEl);
+
+      // normalize controlled state -> formData (overwrite in case of mismatch)
+      formData.set("uploadType", uploadType);
+      formData.set("before2000", before2000);
+      formData.set("letterNarrativeFormat", letterNarrativeFormat);
+      formData.set("photoNarrativeFormat", photoNarrativeFormat);
+      formData.set("guidelines", hasReadGuidelines ? "Yes" : "No");
+      formData.set("termsSubmission", agreedTermsSubmission ? "Yes" : "No");
+      formData.set("letterLanguage", letterLanguage || "");
+      formData.set("letterCategory", letterCategory || "");
+      formData.set("decade", decade || "");
+
+      // post
+      const res = await api.post("http://localhost:8000/api/submissions", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      console.log("Saved:", res.data);
+      alert("Form submitted successfully!");
+
+      // Reset form + controlled state
+      formEl.reset();
+      setUploadType("Both");
+      setBefore2000("No");
+      setLetterNarrativeFormat("text");
+      setPhotoNarrativeFormat("text");
+      setLetterLanguage("");
+      setLetterCategory("");
+      setDecade("");
+      setHasReadGuidelines(false);
+      setAgreedTermsSubmission(false);
+    } catch (err) {
+      console.error("Submit error:", err?.response?.data || err.message);
+      alert(
+        err?.response?.data?.message ||
+          "Submission failed. Check required fields and file sizes/types."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const renderLetterInfo = uploadType === "Letter" || uploadType === "Both";
+  const renderPhotoInfo = uploadType === "Photographs" || uploadType === "Both";
+
   return (
     <section className="max-w-5xl text-left mx-auto p-8 sm:p-12 rounded-2xl shadow-2xl border border-[#8B4513]/30">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
         {/* PERSONAL INFO */}
         <FormSection title="Personal Information">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-6 items-center">
@@ -213,6 +248,7 @@ const Form = () => {
                             name="letterNarrative"
                             label="Text"
                             required
+                            type="textarea"
                           />
                         )}
 
@@ -236,6 +272,7 @@ const Form = () => {
                     className="h-24"
                     label="Narrative (Optional)"
                     name="letterNarrativeOptional"
+                    type="textarea"
                   />
                 </FormSection>
               </>
@@ -261,6 +298,7 @@ const Form = () => {
                       name="photoImage"
                       subtext="Hi Res Jpegs only. 10” width scanned in 300 DPI (Max 5MB)"
                       required
+                      previewType="image"
                     />
                   </div>
                 </FormSection>
@@ -317,6 +355,7 @@ const Form = () => {
                             name="photoNarrative"
                             label="Text"
                             required
+                            type="textarea"
                           />
                         )}
 
@@ -340,6 +379,7 @@ const Form = () => {
                     className="h-24"
                     label="Narrative (Optional)"
                     name="photoNarrativeOptional"
+                    type="textarea"
                   />
                 </FormSection>
               </>
@@ -364,9 +404,14 @@ const Form = () => {
             <div className="mt-10">
               <button
                 type="submit"
-                className="w-full bg-[#6E4A27] text-white font-bold text-lg py-3 px-6 rounded-lg hover:bg-[#79542f] transition-colors duration-300 shadow-lg cursor-pointer"
+                disabled={isSubmitting}
+                className={`w-full bg-[#6E4A27] text-white font-bold text-lg py-3 px-6 rounded-lg transition-colors duration-300 shadow-lg cursor-pointer ${
+                  isSubmitting
+                    ? "opacity-60 cursor-not-allowed"
+                    : "hover:bg-[#79542f]"
+                }`}
               >
-                Submit
+                {isSubmitting ? "Submitting..." : "Submit"}
               </button>
             </div>
           </>
@@ -374,6 +419,4 @@ const Form = () => {
       </form>
     </section>
   );
-};
-
-export default Form;
+}
