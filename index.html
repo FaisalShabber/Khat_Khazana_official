@@ -5,17 +5,30 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>khat-khazana Official</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Ephesis&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Ephesis&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&display=swap" rel="stylesheet" />
+
+    <!-- Your main CSS (Tailwind built file or plain CSS with the import below) -->
+    <link rel="stylesheet" href="/src/styles.css" />
   </head>
   <body>
+    <!-- Fixed background lives as its own layer (not wrapping the app!) -->
+    <div id="bg"></div>
+
+    <!-- Your app -->
     <div id="root"></div>
+
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Optional: tiny->full blur-up swap without blocking UI -->
+    <script>
+      // If you have a tiny placeholder image, this will swap to full-res after load.
+      // If not, you can delete this block safely.
+      const onReady = () => document.body.classList.add('bg-ready');
+      if (document.readyState === 'complete') onReady();
+      else window.addEventListener('load', onReady);
+    </script>
   </body>
 </html>

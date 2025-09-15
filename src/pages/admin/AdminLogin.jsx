@@ -25,7 +25,7 @@ export default function AdminLogin() {
       await login(email, password);   // set token + admin
       await getMe();                  // immediately fetch fresh admin
       setSuccessMsg("Login successful! Redirecting...");
-      const redirectTo = location.state?.from?.pathname || "/admin/dashboard";
+      const redirectTo = location.state?.from?.pathname || "/admin-dashboard";
       navigate(redirectTo, { replace: true }); // redirect immediately
     } catch (err) {
       setErrorMsg(err?.response?.data?.message || "Login failed. Please try again.");
