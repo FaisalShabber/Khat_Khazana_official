@@ -15,8 +15,8 @@ function ParchmentButton({
       onClick={onClick}
       className={[
         "inline-flex items-center justify-center",
-        "px-4 py-3",
-        "min-w-[100px] md:min-w-[80px]",
+        "px-10 py-3",
+        "w-fit",
         "text-center",
         "text-lg md:text-xl font-semibold",
         "text-stone-900 drop-shadow",

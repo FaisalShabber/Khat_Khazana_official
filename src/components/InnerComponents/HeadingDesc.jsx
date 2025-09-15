@@ -19,7 +19,7 @@ const HeadingDesc = ({
       {/* description optional */}
       {description && (
         <p
-          className={`text-2xl md:text-4xl leading-14 text-black italic md:my-2 ${descClassName}`}
+          className={`text-2xl md:text-4xl leading-14 text-black italic md:my-2 capitalize ${descClassName}`}
           style={{ fontFamily: "'Ephesis'" }}
         >
           {description}
