@@ -1,8 +1,8 @@
 import React from "react";
-import RelatedCards from "../../components/Cards/Cards";
 import ThumbnailCards from "../../components/InnerComponents/ThumbnailCards";
 import { IoCalendarOutline } from "react-icons/io5";
 import AudioPlayer from "../../components/InnerComponents/AudioPlayer";
+import RelatedLetterCards from "../../components/Cards/RelatedLetterCards";
 
 const LetterDetailPage = () => {
   return (
@@ -86,7 +86,9 @@ const LetterDetailPage = () => {
 
       {/* ✅ Related Letters Section */}
       <div className="w-full lg:py-20 py-10">
-        <RelatedCards />
+        {/* <RelatedCards /> */}
+
+        <RelatedLetterCards />
       </div>
     </div>
   );

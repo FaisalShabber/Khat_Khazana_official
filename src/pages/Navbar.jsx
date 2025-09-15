@@ -26,14 +26,14 @@ export default function Navbar() {
 
   return (
     <header
-      className="sticky top-0 z-[999] bg-no-repeat bg-top"
+      className="sticky top-0 z-[999] bg-no-repeat bg-top "
       style={{
         fontFamily: "Philosopher, sans-serif",
         backgroundImage: "url('/images/navbar-bg.webp')",
         backgroundSize: "100% 100%",
       }}
     >
-      <div className="mx-auto w-full px-5 xl:px-20 py-2 flex items-center justify-between z-50">
+      <div className="mx-auto w-full px-5 xl:px-20 py-2 flex items-center justify-between z-50 max-w-[1920px]">
         {/* LEFT: Logo */}
         <Link
           to="/"
