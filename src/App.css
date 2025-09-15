@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 /* Base */
-html, body {
+html,
+body {
   height: auto;
   min-height: 100%;
   margin: 0;
@@ -15,6 +16,7 @@ body {
   font-family: "Philosopher", sans-serif;
   background: none; /* background handled by #bg to avoid repaints */
   min-height: 100vh;
+  cursor: url("/cursor/my-cursor.png") 4 4, auto !important;
 }
 
 /* Fixed background layer (independent of app layout) */
@@ -71,12 +73,20 @@ body.bg-ready #bg {
   will-change: filter;
   transition: filter 300ms;
 }
-.logo:hover { filter: drop-shadow(0 0 2em #646cffaa); }
-.logo.react:hover { filter: drop-shadow(0 0 2em #61dafbaa); }
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
 
 @keyframes logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
@@ -84,5 +94,9 @@ body.bg-ready #bg {
   }
 }
 
-.card { padding: 2em; }
-.read-the-docs { color: #888; }
+.card {
+  padding: 2em;
+}
+.read-the-docs {
+  color: #888;
+}

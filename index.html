@@ -7,8 +7,14 @@
     <title>khat-khazana Official</title>
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Ephesis&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ephesis&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Your main CSS (Tailwind built file or plain CSS with the import below) -->
     <link rel="stylesheet" href="/src/styles.css" />
@@ -26,9 +32,27 @@
     <script>
       // If you have a tiny placeholder image, this will swap to full-res after load.
       // If not, you can delete this block safely.
-      const onReady = () => document.body.classList.add('bg-ready');
-      if (document.readyState === 'complete') onReady();
-      else window.addEventListener('load', onReady);
+      const onReady = () => document.body.classList.add("bg-ready");
+      if (document.readyState === "complete") onReady();
+      else window.addEventListener("load", onReady);
+    </script>
+    <script type="text/javascript">
+      (function (l) {
+        if (l.search[1] === "/") {
+          var decoded = l.search
+            .slice(1)
+            .split("&")
+            .map(function (s) {
+              return s.replace(/~and~/g, "&");
+            })
+            .join("?");
+          window.history.replaceState(
+            null,
+            null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      })(window.location);
     </script>
   </body>
 </html>
