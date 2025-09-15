@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
-import HeadingDesc from "./components/InnerComponents/HeadingDesc";
-import LetterCard from "./components/InnerComponents/Cards/LetterCard";
-import Subcription from "./components/InnerComponents/Subcription";
+import HeadingDesc from "../../components/InnerComponents/HeadingDesc";
+import LetterCard from "../../components/Cards/LetterCard";
+import Subcription from "../../components/InnerComponents/Subcription";
 
 // Dummy Data (isko API ya props se bhi le sakte ho)
 const cards = [

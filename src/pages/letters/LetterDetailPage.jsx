@@ -1,8 +1,8 @@
 import React from "react";
-import RelatedCards from "./components/InnerComponents/Cards/Cards";
-import ThumbnailCards from "./components/InnerComponents/ThumbnailCards";
+import RelatedCards from "../../components/Cards/Cards";
+import ThumbnailCards from "../../components/InnerComponents/ThumbnailCards";
 import { IoCalendarOutline } from "react-icons/io5";
-import AudioPlayer from "./components/InnerComponents/AudioPlayer";
+import AudioPlayer from "../../components/InnerComponents/AudioPlayer";
 
 const LetterDetailPage = () => {
   return (

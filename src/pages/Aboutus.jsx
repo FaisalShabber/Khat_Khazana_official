@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useState, useEffect, useRef } from "react";
-import Subcription from "./components/InnerComponents/Subcription";
+import Subcription from "../components/InnerComponents/Subcription";
 import {
   FaTimes,
   FaChevronLeft,

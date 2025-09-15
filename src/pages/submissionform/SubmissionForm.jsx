@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React, { useState } from "react";
-import ParchmentButton from "./components/InnerComponents/ParchmentButton";
-import Form from "./components/InnerComponents/SubmissionForm/Form";
+import ParchmentButton from "../../components/InnerComponents/ParchmentButton";
+import Form from "../../components/SubmissionForm/Form";
 
 // ✅ Modal Component
 const Modal = ({ isOpen, onClose, title, children }) => {

@@ -37,10 +37,7 @@ const FileInput = ({
     >
       <div className="flex flex-col">
         {label && (
-          <label
-            htmlFor={name}
-            className="font-bold text-sm mb-2 block"
-          >
+          <label htmlFor={name} className="font-bold text-sm mb-2 block">
             {label} {required && <span className="text-red-600">*</span>}
           </label>
         )}

@@ -1,12 +1,10 @@
-/* eslint-disable no-unused-vars */
-// @ts-nocheck
 import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
-import { useNavigate } from "react-router-dom";
-import HeadingDesc from "./components/InnerComponents/HeadingDesc";
-import PhotographCard from "./components/InnerComponents/Cards/PhotographCard";
-import Subcription from "./components/InnerComponents/Subcription";
+import HeadingDesc from "../../components/InnerComponents/HeadingDesc";
+import Subcription from "../../components/InnerComponents/Subcription";
+import LetterCard from "../../components/Cards/LetterCard";
 
+// Dummy Data (isko API ya props se bhi le sakte ho)
 const cards = [
   {
     overlay: "/images/About-1.webp",
@@ -78,9 +76,7 @@ const cards = [
   },
 ];
 
-
-const PhotoGraph = () => {
-  const navigate = useNavigate();
+function EnglishLetters() {
   const [visibleCount, setVisibleCount] = useState(12);
   const [loading, setLoading] = useState(false);
 
@@ -99,9 +95,9 @@ const PhotoGraph = () => {
       {/* Heading */}
       <HeadingDesc
         headingClassName="md:text-[40px] text-center"
-        heading="Photographs"
+        heading="English Letters"
         containerClassName="mt-6"
-        description={undefined}
+        description="Get the latest items immediately with promo prices"
       />
 
       {/* Filters */}
@@ -124,14 +120,14 @@ const PhotoGraph = () => {
       </div>
 
       {/* Cards */}
-      <div className="mt-16 w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-        {visibleCards?.map((card, i) => (
-          <PhotographCard
-            key={card?.id}
-            to={`/PhotoGraphs/${i}`}
-            overlayImg={card?.overlay}
-            title={card.title}
-            description={card.description}
+      <div className="mt-16 w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
+        {visibleCards.map((card, i) => (
+          <LetterCard
+            key={i}
+            to={`/letters/english/${i}`}
+            overlay={card.overlay} // ✅ current card ka overlay
+            title={card.title || "Default Title"} // ✅ dynamic title agar ho
+            description={card.description || "Default description"} // ✅ dynamic desc agar ho
           />
         ))}
       </div>
@@ -161,6 +157,6 @@ const PhotoGraph = () => {
       </div>
     </div>
   );
-};
+}
 
-export default PhotoGraph;
+export default EnglishLetters;

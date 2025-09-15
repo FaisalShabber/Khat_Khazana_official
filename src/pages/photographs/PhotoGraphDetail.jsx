@@ -1,7 +1,7 @@
 import React from "react";
 import { IoCalendarOutline } from "react-icons/io5";
-import ThumbnailCards from "./components/InnerComponents/ThumbnailCards";
-import RelatedPhotographs from "./components/InnerComponents/Cards/RelatedPhotographs";
+import ThumbnailCards from "../../components/InnerComponents/ThumbnailCards";
+import RelatedPhotographs from "../../components/Cards/RelatedPhotographs";
 
 const PhotoGraphDetail = () => {
   // const { id } = useParams();

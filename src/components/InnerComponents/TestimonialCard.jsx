@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from "react";
-import FeaturedCard from "./Cards/FeaturedCard";
+import FeaturedCard from "../Cards/FeaturedCard";
 
 // Dummy Data (isko API ya props se bhi le sakte ho)
 const cards = [

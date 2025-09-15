@@ -1,10 +1,12 @@
+/* eslint-disable no-unused-vars */
+// @ts-nocheck
 import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
-import HeadingDesc from "./components/InnerComponents/HeadingDesc";
-import LetterCard from "./components/InnerComponents/Cards/LetterCard";
-import Subcription from "./components/InnerComponents/Subcription";
+import { useNavigate } from "react-router-dom";
+import HeadingDesc from "../../components/InnerComponents/HeadingDesc";
+import PhotographCard from "../../components/Cards/PhotographCard";
+import Subcription from "../../components/InnerComponents/Subcription";
 
-// Dummy Data (isko API ya props se bhi le sakte ho)
 const cards = [
   {
     overlay: "/images/About-1.webp",
@@ -76,7 +78,9 @@ const cards = [
   },
 ];
 
-function Urduletter() {
+
+const PhotoGraph = () => {
+  const navigate = useNavigate();
   const [visibleCount, setVisibleCount] = useState(12);
   const [loading, setLoading] = useState(false);
 
@@ -95,9 +99,9 @@ function Urduletter() {
       {/* Heading */}
       <HeadingDesc
         headingClassName="md:text-[40px] text-center"
-        heading="Urdu Letters"
+        heading="Photographs"
         containerClassName="mt-6"
-        description="Get the latest items immediately with promo prices"
+        description={undefined}
       />
 
       {/* Filters */}
@@ -120,14 +124,14 @@ function Urduletter() {
       </div>
 
       {/* Cards */}
-      <div className="mt-16 w-full max-w-6xl grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
-        {visibleCards.map((card, i) => (
-          <LetterCard
-            key={i}
-            to={`/letters/urdu/${i}`}
-            overlay={card.overlay} // ✅ current card ka overlay
-            title={card.title || "Default Title"} // ✅ dynamic title agar ho
-            description={card.description || "Default description"} // ✅ dynamic desc agar ho
+      <div className="mt-16 w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        {visibleCards?.map((card, i) => (
+          <PhotographCard
+            key={card?.id}
+            to={`/PhotoGraphs/${i}`}
+            overlayImg={card?.overlay}
+            title={card.title}
+            description={card.description}
           />
         ))}
       </div>
@@ -157,6 +161,6 @@ function Urduletter() {
       </div>
     </div>
   );
-}
+};
 
-export default Urduletter;
+export default PhotoGraph;

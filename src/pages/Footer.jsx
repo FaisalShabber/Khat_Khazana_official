@@ -5,7 +5,7 @@ import {
   FaInstagram,
   FaLinkedinIn,
 } from "react-icons/fa";
-import EmailOrPhone from "./components/InnerComponents/EmailOrPhone";
+import EmailOrPhone from "../components/InnerComponents/EmailOrPhone";
 import { Link } from "react-router-dom";
 
 export default function Footer() {

@@ -37,7 +37,7 @@ const Layout = () => {
         <Route path="/letters" element={<Latters />} />
 
         {/* Sub routes with details */}
-        <Route path="/letters/english" element={<Englishletter />} />
+        <Route path="/letters/english" element={<EnglishLetters />} />
         <Route path="/letters/english/:id" element={<LetterDetailPage />} />
 
         <Route path="/letters/urdu" element={<Urduletter />} />
