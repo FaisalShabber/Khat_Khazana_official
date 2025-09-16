@@ -2,6 +2,7 @@ import React from "react";
 import { IoCalendarOutline } from "react-icons/io5";
 import ThumbnailCards from "../../components/InnerComponents/ThumbnailCards";
 import RelatedPhotographs from "../../components/Cards/RelatedPhotographs";
+import Subcription from "../../components/InnerComponents/Subcription";
 
 const PhotoGraphDetail = () => {
   // const { id } = useParams();
@@ -95,6 +96,9 @@ const PhotoGraphDetail = () => {
         {/* ✅ Related Letters Section */}
         <div className=" w-full lg:py-20 py-10">
           <RelatedPhotographs />
+        </div>
+        <div className="mb-20">
+          <Subcription />
         </div>
       </div>
     </>

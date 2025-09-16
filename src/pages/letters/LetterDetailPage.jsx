@@ -3,10 +3,11 @@ import ThumbnailCards from "../../components/InnerComponents/ThumbnailCards";
 import { IoCalendarOutline } from "react-icons/io5";
 import AudioPlayer from "../../components/InnerComponents/AudioPlayer";
 import RelatedLetterCards from "../../components/Cards/RelatedLetterCards";
+import Subcription from "../../components/InnerComponents/Subcription";
 
 const LetterDetailPage = () => {
   return (
-    <div className="min-h-[300px] px-5 lg:px-0 bg-cover bg-center">
+    <div className="min-h-[300px] px-5 lg:px-0 bg-cover bg-center ">
       <div className="py-5  max-w-[1270px]  w-full mx-auto text-black">
         {/* Date + Category */}
         <div className="flex items-center text-sm  mt-10">
@@ -89,6 +90,9 @@ const LetterDetailPage = () => {
         {/* <RelatedCards /> */}
 
         <RelatedLetterCards />
+      </div>
+      <div className="mb-20">
+        <Subcription />
       </div>
     </div>
   );
